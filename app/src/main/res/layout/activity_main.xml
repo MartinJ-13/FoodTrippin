@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/white_logo" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-40dp"
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:fontFamily="@font/nunito_bold"
+                android:fontFamily="@font/nunito"
                 android:text="Email/Username"
                 android:textColor="#FF873A"
                 android:textSize="16sp" />
