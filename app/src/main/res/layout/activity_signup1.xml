@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FF9C5C"
-    tools:context=".MainActivity">
+    tools:context=".SignUpActivity1">
 
     <ImageView
         android:id="@+id/logo_white"
@@ -39,15 +39,29 @@
         app:layout_constraintTop_toBottomOf="@+id/logo_white">
 
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Join the Food Trippin \n community!"
+            android:textAlignment="center"
+            android:textColor="#FF873A"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <LinearLayout
             android:id="@+id/Password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
 
             <TextView
                 android:id="@+id/password1Tv"
@@ -73,65 +87,30 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/passwordLl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Password">
-
-            <TextView
-                android:id="@+id/passwordTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/nunito_bold"
-                android:text="Password"
-                android:textColor="#FF873A"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/inputPasswordTv"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:background="@drawable/login_input_field"
-                android:ems="10"
-                android:fontFamily="@font/nunito"
-                android:inputType="textWebPassword"
-                android:padding="5dp"
-                android:text="FoodTripper"
-                android:textColor="#000000"
-                android:textSize="16sp" />
-        </LinearLayout>
-
         <Button
             android:id="@+id/uploadBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="48dp"
             android:backgroundTint="#3A8182"
             android:fontFamily="@font/nunito_bold"
-            android:paddingLeft="48dp"
+            android:paddingLeft="42dp"
             android:paddingTop="10dp"
-            android:paddingRight="48dp"
+            android:paddingRight="42dp"
             android:paddingBottom="10dp"
-            android:text="LOGIN"
-            android:textSize="20sp"
+            android:text="NEXT"
+            android:textSize="16sp"
             app:cornerRadius="30px"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordLl" />
+            app:layout_constraintTop_toBottomOf="@+id/Password" />
 
         <LinearLayout
             android:id="@+id/alternateLl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_marginTop="48dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/uploadBtn">
@@ -142,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/nunito_semibold"
-                android:text="Don't have an account?"
+                android:text="Already have an account?"
                 android:textColor="#FF9C5C"
                 android:textSize="16sp" />
 
@@ -153,7 +132,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/nunito_semibold"
-                android:text="Sign up here"
+                android:text="Log in here"
                 android:textColor="#3A8182"
                 android:textSize="16sp" />
         </LinearLayout>
