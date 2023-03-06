@@ -7,7 +7,7 @@
     android:background="#FFFFFF">
 
     <Button
-        android:id="@+id/uploadBtn3"
+        android:id="@+id/finishBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#3A8182"
@@ -17,6 +17,7 @@
         android:paddingRight="20dp"
         android:paddingBottom="10dp"
         android:text="It's Food Trippin Time"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:cornerRadius="30px"
         app:layout_constraintBottom_toBottomOf="parent"

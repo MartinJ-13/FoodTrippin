@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/nunito_bold"
-        android:text="I love you. \n Thank you for taking the time to help out the community <3"
+        android:text="I love you. \n Thank you for taking the time to help out the community."
         android:textAlignment="center"
         android:textColor="#3A8182"
         android:textSize="20sp"

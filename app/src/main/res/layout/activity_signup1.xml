@@ -64,7 +64,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2">
 
             <TextView
-                android:id="@+id/password1Tv"
+                android:id="@+id/usernameTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -80,15 +80,16 @@
                 android:background="@drawable/login_input_field"
                 android:ems="10"
                 android:fontFamily="@font/nunito"
+                android:hint="Enter Username"
                 android:inputType="textPersonName"
                 android:padding="5dp"
-                android:text="FoodTripper"
                 android:textColor="#000000"
+                android:textColorHint="#3A3A3A"
                 android:textSize="16sp" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/uploadBtn"
+            android:id="@+id/nextBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
@@ -99,6 +100,7 @@
             android:paddingRight="42dp"
             android:paddingBottom="10dp"
             android:text="NEXT"
+            android:textColor="#FFFFFFFF"
             android:textSize="16sp"
             app:cornerRadius="30px"
             app:layout_constraintEnd_toEndOf="parent"
@@ -109,11 +111,11 @@
             android:id="@+id/alternateLl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="32dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/uploadBtn">
+            app:layout_constraintTop_toBottomOf="@+id/nextBtn">
 
             <TextView
                 android:id="@+id/altTextTv"
@@ -126,7 +128,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/loginTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
