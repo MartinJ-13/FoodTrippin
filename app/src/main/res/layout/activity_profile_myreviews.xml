@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/headerLl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF9C5C"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/headerIconIv"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            app:srcCompat="@drawable/white_logo" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/profileBannerLl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3A8182"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@id/headerLl">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/myReviews_userIconIv"
+            android:layout_width="91dp"
+            android:layout_height="91dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:shapeAppearanceOverlay="@style/roundImageView_profile_profileBanner_userIcon"
+            app:srcCompat="@tools:sample/avatars" />
+
+        <LinearLayout
+            android:id="@+id/profileBannerLl_usernameBio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/profile_myReviews_usernameTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Username"
+                android:textColor="#FFFFFF"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/profile_myReviews_bioEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:height="20dp"
+                android:background="#00FFFFFF"
+                android:text="Bio"
+                android:textColor="#FFFFFF"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profileReviewsLikedLl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileBannerLl">
+
+        <Button
+            android:id="@+id/profile_myReviewsBtn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+
+            android:background="#00FFFFFF"
+            android:text="My Reviews"
+            android:textAllCaps="false"
+            android:textColor="#3A8182"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/profile_likedBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_conversion_absoluteHeight="48dp"
+            tools:layout_conversion_absoluteWidth="119dp" />
+
+        <Button
+            android:id="@+id/profile_likedBtn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:text="Liked"
+            android:textAllCaps="false"
+            android:textColor="#3A8182"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toRightOf="@id/profile_myReviewsBtn"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_conversion_absoluteHeight="48dp"
+            tools:layout_conversion_absoluteWidth="88dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profile_myReviews_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/profileReviewsLikedLl" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
