@@ -6,9 +6,13 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/samplinearLl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/headerLl"
@@ -94,7 +98,6 @@
                 android:textAllCaps="false"
                 android:textColor="#3A8182"
                 android:textSize="16dp"
-                android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/profile_likedBtn"
                 app:layout_constraintTop_toTopOf="parent"
@@ -110,6 +113,7 @@
                 android:textAllCaps="false"
                 android:textColor="#3A8182"
                 android:textSize="16dp"
+                android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="@id/profile_myReviewsBtn"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -119,10 +123,11 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/profile_myReviews_recyclerView"
+            android:id="@+id/profile_liked_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp" />
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
