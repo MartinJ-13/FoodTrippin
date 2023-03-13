@@ -47,6 +47,12 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/review_byTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="By: Username" />
+
+            <TextView
                 android:id="@+id/review_datePostedTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

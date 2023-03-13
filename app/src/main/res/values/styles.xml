@@ -27,4 +27,8 @@
         <item name="android:layout_height">40dp</item>
     </style>
 
+    <style name="button_orange" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">#FF9C5C</item>
+    </style>
+
 </resources>
