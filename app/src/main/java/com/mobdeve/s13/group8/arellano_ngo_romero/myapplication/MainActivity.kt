@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         viewBinding.loginBtn.setOnClickListener(View.OnClickListener {
             if(viewBinding.inputUserLoginTv.text.toString().isNotEmpty() && viewBinding.inputLogPasswordTv.text.toString().isNotEmpty())
             {
-                val intent = Intent(applicationContext, SignUpActivity1::class.java)
+                val intent = Intent(applicationContext, HomePageActivity::class.java)
                 this.startActivity(intent)
             }
         })
