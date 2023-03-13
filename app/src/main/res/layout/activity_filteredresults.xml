@@ -38,13 +38,13 @@
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintBottom_toTopOf="@+id/textView" />
 
-
+<!--Change this possible next time to display the number of filtered results " ' ' + Results found -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFA500"
-        android:text="Filtered Restaurants"
+        android:text="Filtered Results"
         android:layout_marginTop="16dp"
         android:textSize="20dp"
         android:fontFamily="@font/nunito_bold"
