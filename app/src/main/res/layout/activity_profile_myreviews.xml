@@ -43,9 +43,10 @@
                 android:layout_width="91dp"
                 android:layout_height="91dp"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
                 app:shapeAppearanceOverlay="@style/roundImageView_profile_profileBanner_userIcon"
-                app:srcCompat="@tools:sample/avatars" />
+                app:srcCompat="@drawable/resto_placeholder"
+                android:scaleType="centerCrop"
+                />
 
             <LinearLayout
                 android:id="@+id/profileBannerLl_usernameBio"

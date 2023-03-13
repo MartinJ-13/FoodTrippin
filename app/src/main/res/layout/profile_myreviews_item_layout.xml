@@ -15,18 +15,15 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/liked_userIconIv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:adjustViewBounds="true"
-            android:maxWidth="70dp"
-            android:maxHeight="70dp"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-
             app:shapeAppearanceOverlay="@style/roundImageView_profile_myLiked_userIcon"
-            app:srcCompat="@tools:sample/avatars" />
+            app:srcCompat="@drawable/resto_placeholder" />
 
         <!-- TODO: Stars for the restaurant rating-->
         <LinearLayout
