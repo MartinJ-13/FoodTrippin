@@ -24,5 +24,10 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(applicationContext, SignUpActivity1::class.java)
                 this.startActivity(intent)
         })
+
+        viewBinding.tempBtn.setOnClickListener(View.OnClickListener {
+            val intent = Intent(applicationContext, ProfilemyreviewsActivity::class.java)
+            this.startActivity(intent)
+        })
     }
 }
