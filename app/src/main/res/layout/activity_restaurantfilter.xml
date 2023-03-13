@@ -65,15 +65,10 @@
             android:layout_height="wrap_content" />
 
         <TextView
-<<<<<<< Updated upstream
-            android:id="@+id/review_byTv"
-=======
             android:id="@+id/tvCuisineType"
->>>>>>> Stashed changes
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cuisine" />
-
         <Spinner
             android:id="@+id/spCuisineType"
             android:layout_width="match_parent"

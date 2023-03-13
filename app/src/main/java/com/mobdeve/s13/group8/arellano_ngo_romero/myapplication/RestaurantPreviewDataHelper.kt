@@ -1,6 +1,6 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
-class RestaurantPreviewDataHelper {
+class RestaurantPreviewDataHelper{
         companion object {
             fun loadData(): ArrayList<RestaurantPreviewModel> {
                 val data = ArrayList<RestaurantPreviewModel>()
