@@ -31,12 +31,12 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="296dp"
-        android:layout_height="72dp"
+        android:layout_width="261dp"
+        android:layout_height="31dp"
         android:spinnerDropDownItemStyle="@style/SpinnerStyle"
 
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="263dp" />
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="219dp" />
 
     <Spinner
         android:id="@+id/spinner2"
