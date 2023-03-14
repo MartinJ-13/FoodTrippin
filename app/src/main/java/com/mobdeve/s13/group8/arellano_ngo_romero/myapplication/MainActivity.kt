@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +19,12 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(applicationContext, HomePageActivity::class.java)
                 this.startActivity(intent)
             }
+
+            else
+            {
+                Toast.makeText(this, "Please enter your username and password.", Toast.LENGTH_SHORT).show()
+            }
+
         })
 
         viewBinding.loginTv.setOnClickListener(View.OnClickListener {

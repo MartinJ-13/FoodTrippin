@@ -1,9 +1,9 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
 import androidx.recyclerview.widget.RecyclerView
-import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ProfilemyreviewsLayoutBinding
+import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ItemlayoutProfilemyreviewsBinding
 
-class ReviewViewHolder(private val viewBinding: ProfilemyreviewsLayoutBinding ): RecyclerView.ViewHolder(viewBinding.root) {
+class ReviewViewHolder(private val viewBinding: ItemlayoutProfilemyreviewsBinding ): RecyclerView.ViewHolder(viewBinding.root) {
 
     fun bindData(review: Review){
         this.viewBinding.reviewReviewTv.text = review.review

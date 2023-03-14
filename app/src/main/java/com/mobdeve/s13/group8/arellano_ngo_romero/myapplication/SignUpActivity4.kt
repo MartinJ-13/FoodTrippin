@@ -1,5 +1,6 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,10 @@ class SignUpActivity4 : AppCompatActivity() {
         setContentView(viewBinding.root)
 
         viewBinding.finishBtn.setOnClickListener(View.OnClickListener {
+            val intent1 = Intent(this, MainActivity::class.java)
+            intent1.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+
+            startActivity(intent1)
             finish()
         })
 
