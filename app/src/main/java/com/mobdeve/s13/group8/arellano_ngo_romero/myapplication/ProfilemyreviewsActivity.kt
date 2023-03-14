@@ -17,7 +17,7 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
         val viewBinding: ActivityProfilemyreviewsBinding = ActivityProfilemyreviewsBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-       this.data = ReviewDataHelper.generateData()
+        this.data = ReviewDataHelper.generateData()
         this.recyclerView = viewBinding.profileMyReviewsRecyclerView
         this.myAdapter = ReviewAdapter(data)
         this.recyclerView.adapter = myAdapter
