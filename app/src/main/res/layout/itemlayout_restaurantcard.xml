@@ -76,12 +76,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:text="TextView"
+                android:text="Restaurant Location"
                 android:textColor="#FFFFFF" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/profile_liked_tagsLl"
+            android:id="@+id/profile_liked_cuisineTypeLl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -110,6 +110,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/profile_liked_diningTypeLl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -119,7 +120,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/profile_liked_diningtypeIV"
+                android:id="@+id/profile_liked_diningtypeIv"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_weight="0"
@@ -127,13 +128,15 @@
                 app:srcCompat="@drawable/dining_type_icon" />
 
             <TextView
-                android:id="@+id/profile_liked_diningtypeTV"
+                android:id="@+id/profile_liked_diningtypeTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="0"
-                android:text="TextView"
+                android:text="Tag 1"
                 android:textColor="#FFFFFF" />
+
         </LinearLayout>
 
     </LinearLayout>
