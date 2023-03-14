@@ -44,8 +44,11 @@ class ReviewActivity : AppCompatActivity(){
                 val intent2 = Intent(this, HomePageActivity::class.java)
                 intent2.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
 
+                val intent3 = Intent(this, ILoveYouActivity::class.java)
                 //    val intent3 = Intent(this, )
                 startActivity(intent1)
+                startActivity(intent2)
+                startActivity(intent3)
                 finish()
             }
             else
