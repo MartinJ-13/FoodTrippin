@@ -134,7 +134,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
             app:srcCompat="@drawable/avatar"
-            tools:srcCompat="@drawable/avatar" />
+            tools:srcCompat="@drawable/avatar"
+            android:clipToOutline="true"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
