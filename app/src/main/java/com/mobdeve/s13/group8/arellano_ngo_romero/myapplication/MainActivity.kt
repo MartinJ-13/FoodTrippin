@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         viewBinding.tempBtn.setOnClickListener(View.OnClickListener {
-            val intent = Intent(applicationContext, ProfilemyreviewsActivity::class.java)
+            val intent = Intent(applicationContext, RestaurantActivity::class.java)
             this.startActivity(intent)
         })
 

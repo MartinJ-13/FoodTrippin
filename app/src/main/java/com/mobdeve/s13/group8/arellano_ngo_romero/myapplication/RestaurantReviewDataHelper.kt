@@ -6,7 +6,7 @@ class RestaurantReviewDataHelper {
             val data = ArrayList<RestaurantReview>()
 
             data.add(RestaurantReview(
-                R.drawable.sample_femaleAvatar,
+                R.drawable.sample_femaleavatar,
                 "Review Title 1",
                 "Denji",
                 "August 19, 2023",
@@ -16,7 +16,7 @@ class RestaurantReviewDataHelper {
             ))
 
             data.add(RestaurantReview(
-                R.drawable.sample_femaleAvatar,
+                R.drawable.sample_femaleavatar,
                 "Review Title 2",
                 "Power",
                 "March 14, 2023",
@@ -26,7 +26,7 @@ class RestaurantReviewDataHelper {
             ))
 
             data.add(RestaurantReview(
-                R.drawable.sample_femaleAvatar,
+                R.drawable.sample_femaleavatar,
                 "Review Title 3",
                 "Aki",
                 "January 1, 2023",

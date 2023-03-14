@@ -18,6 +18,7 @@ class RestaurantActivity : AppCompatActivity()  {
     private lateinit var menuAdapter: RestaurantMenuAdapter
 
     private lateinit var viewBinding: ActivityProfilemyreviewsBinding
+
     private lateinit var reviewRecyclerView: RecyclerView
     private lateinit var menuRecyclerView: RecyclerView
 
@@ -30,19 +31,17 @@ class RestaurantActivity : AppCompatActivity()  {
 
         this.reviewData = RestaurantReviewDataHelper.loadData()
         this.menuData = RestaurantMenuDataHelper.loadData()
-        this.reviewRecyclerView = viewBinding.restaurantReviewsRecyclerView
-
-        this.menuRecyclerView.adapter = menuAdapter
-        this.reviewRecyclerView.adapter = reviewAdapter
 
         this.reviewAdapter = RestaurantReviewAdapter(reviewData)
         this.menuAdapter = RestaurantMenuAdapter(menuData)
 
-
+        this.reviewRecyclerView = viewBinding.restaurantReviewsRecyclerView
         this.menuRecyclerView = viewBinding.restaurantMenuRecyclerView
 
-        this.reviewRecyclerView.layoutManager = LinearLayoutManager(this)
-        this.menuRecyclerView.layoutManager = LinearLayoutManager(this)
+        this.menuRecyclerView.adapter = menuAdapter
+        this.reviewRecyclerView.adapter = reviewAdapter
 
+        this.reviewRecyclerView.layoutManager = LinearLayoutManager(this)
+        this.menuRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
     }
 }
