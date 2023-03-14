@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FilterRestaurantActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="365dp"
+        android:layout_height="561dp"
+        android:layout_centerInParent="true"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/headerFilterResults"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="FILTER RESULTS"
+                android:textColor="#FF9C5C"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/closePopupBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/close_popup_icon" />
+
+            <TextView
+                android:id="@+id/tvFilterRating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/headerFilterResults"
+                android:layout_marginTop="16dp"
+                android:text="Filter by Rating"
+                android:textSize="18sp" />
+
+            <RatingBar
+                android:id="@+id/rbFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvFilterRating"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/tvFilterCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rbFilter"
+                android:layout_marginTop="16dp"
+                android:text="City"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spFilterCity"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tvFilterCity"
+                android:layout_marginTop="8dp"
+                android:spinnerDropDownItemStyle="@style/SpinnerStyle" />
+
+            <TextView
+                android:id="@+id/tvCuisineType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spFilterCity"
+                android:layout_marginTop="16dp"
+                android:text="Cuisine"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spCuisineType"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tvCuisineType"
+                android:layout_marginTop="8dp"
+                android:spinnerDropDownItemStyle="@style/SpinnerStyle" />
+
+            <TextView
+                android:id="@+id/tvDiningType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spCuisineType"
+                android:layout_marginTop="16dp"
+                android:text="Dining"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spDiningType"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tvDiningType"
+                android:layout_marginTop="8dp"
+                android:spinnerDropDownItemStyle="@style/SpinnerStyle" />
+
+            <Button
+                android:id="@+id/btnApply"
+                android:layout_width="100dp"
+                android:layout_height="36dp"
+                android:layout_below="@+id/spDiningType"
+                android:layout_alignStart="@+id/spDiningType"
+                android:layout_alignEnd="@+id/spDiningType"
+                android:layout_marginStart="113dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="114dp"
+                android:backgroundTint="#3A8182"
+                android:text="APPLY"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
