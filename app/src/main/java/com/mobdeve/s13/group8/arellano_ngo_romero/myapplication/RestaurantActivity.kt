@@ -1,12 +1,16 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.menu.MenuAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityProfilemyreviewsBinding
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityRestaurantBinding
 
@@ -43,5 +47,18 @@ class RestaurantActivity : AppCompatActivity()  {
 
         this.reviewRecyclerView.layoutManager = LinearLayoutManager(this)
         this.menuRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        var likeFlag: Boolean
+        likeFlag = false
+
+        viewBinding.restaurantLikeBtn.setOnClickListener(View.OnClickListener {
+            likeFlag = if(!likeFlag) {
+                viewBinding.restaurantLikeBtn.setImageResource(R.drawable.heart_on)
+                true
+            } else {
+                viewBinding.restaurantLikeBtn.setImageResource(R.drawable.heart_off)
+                false
+            }
+        })
     }
 }
