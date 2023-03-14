@@ -22,6 +22,9 @@ class SignUpActivity3 : AppCompatActivity() {
             this.startActivity(intent)
         })
         viewBinding.loginTv.setOnClickListener(View.OnClickListener {
+            val intent1 = Intent(this, MainActivity::class.java)
+            intent1.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent1)
             finish()
         })
     }

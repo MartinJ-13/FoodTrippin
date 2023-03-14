@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ILoveYouActivity">
 
     <Button
         android:id="@+id/homeBtn"
@@ -61,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/nunito_bold"
-        android:text="I love you. \n Thank you for taking the time to help out the community."
+        android:text="I love you. \n Thank you for taking the time to help out the community with your review!"
         android:textAlignment="center"
         android:textColor="#3A8182"
         android:textSize="20sp"

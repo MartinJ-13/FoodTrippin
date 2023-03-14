@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/logo_white"
-        android:layout_width="273dp"
+        android:layout_width="220dp"
         android:layout_height="273dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +21,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-40dp"
+        android:layout_marginTop="-50dp"
         android:fontFamily="@font/nunito_bold"
         android:text="Eat like a local!"
         android:textColor="#FFFFFF"
