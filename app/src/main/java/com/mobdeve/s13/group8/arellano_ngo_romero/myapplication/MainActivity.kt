@@ -33,14 +33,5 @@ class MainActivity : AppCompatActivity() {
                 this.startActivity(intent)
         })
 
-        viewBinding.tempBtn.setOnClickListener(View.OnClickListener {
-            val intent = Intent(applicationContext, RestaurantActivity::class.java)
-            this.startActivity(intent)
-        })
-
-        viewBinding.tempBtn2.setOnClickListener(View.OnClickListener {
-            val intent = Intent(applicationContext, ProfilemyreviewsActivity::class.java)
-            this.startActivity(intent)
-        })
     }
 }
