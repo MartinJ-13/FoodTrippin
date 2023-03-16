@@ -29,63 +29,58 @@
 
     </LinearLayout>
 
-<!--    <include-->
-<!--        android:id="@+id/include"-->
-<!--        layout="@layout/activity_toolbar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        tools:layout_editor_absoluteX="0dp"-->
-<!--        app:layout_constraintVertical_chainStyle="packed" />-->
 
     <LinearLayout
         android:id="@+id/toolbarLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginStart="9dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/recyclerView"
+        app:layout_constraintStart_toEndOf="@+id/recyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/headerLl">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/rounded_search_border"
-        android:iconifiedByDefault="false"
-        android:inputType="text"
-        android:queryHint="Search"
-        app:iconifiedByDefault="false" />
 
-    <ImageButton
-        android:id="@+id/filterBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:background="@android:color/transparent"
-        android:padding="12dp"
-        android:src="@drawable/va_filter" />
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_search_border"
+            android:iconifiedByDefault="false"
+            android:inputType="text"
+            android:queryHint="Search"
+            app:iconifiedByDefault="false">
+
+        </androidx.appcompat.widget.SearchView>
+
+        <ImageButton
+            android:id="@+id/filterBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="12dp"
+            android:src="@drawable/va_filter" />
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvFeaturedRestos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#FFA500"
-        android:text="Featured Restaurants"
-        android:layout_marginTop="16dp"
-        android:textSize="20dp"
         android:fontFamily="@font/nunito_bold"
-        app:layout_constraintTop_toBottomOf="@id/include"
-        app:layout_constraintBottom_toTopOf="@id/recyclerView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:text="Featured Restaurants"
+        android:textColor="#FFA500"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/toolbarLayout"
+        app:layout_constraintStart_toStartOf="@+id/toolbarLayout"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarLayout" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvFeaturedRestos" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
