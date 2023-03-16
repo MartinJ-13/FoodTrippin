@@ -33,4 +33,16 @@
         <item name="colorControlActivated">#FFC922</item>
     </style>
 
+    <style name="AppTheme.HomePage" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/light_gray</item>
+        <item name="colorOnPrimary">@color/dark_gray</item>
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorSecondaryVariant">@color/dark_blue</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:textColorSecondary">@color/gray</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:textColorLink">@color/blue</item>
+    </style>
 </resources>

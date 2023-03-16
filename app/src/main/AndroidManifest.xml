@@ -58,6 +58,7 @@
         </activity>
         <activity
             android:name=".HomePageActivity"
+            android:theme="@style/AppTheme.HomePage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

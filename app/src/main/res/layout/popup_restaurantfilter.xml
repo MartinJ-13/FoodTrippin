@@ -5,18 +5,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FilterRestaurantActivity">
+    >
 
     <androidx.cardview.widget.CardView
-        android:layout_width="365dp"
-        android:layout_height="561dp"
+        android:layout_width="367dp"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="458dp"
             android:padding="20dp">
 
             <TextView
@@ -55,27 +55,10 @@
                 android:layout_marginTop="8dp" />
 
             <TextView
-                android:id="@+id/tvFilterCity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/rbFilter"
-                android:layout_marginTop="16dp"
-                android:text="City"
-                android:textSize="18sp" />
-
-            <Spinner
-                android:id="@+id/spFilterCity"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_below="@+id/tvFilterCity"
-                android:layout_marginTop="8dp"
-                android:spinnerDropDownItemStyle="@style/SpinnerStyle" />
-
-            <TextView
                 android:id="@+id/tvCuisineType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/spFilterCity"
+                android:layout_below="@+id/rbFilter"
                 android:layout_marginTop="16dp"
                 android:text="Cuisine"
                 android:textSize="18sp" />
