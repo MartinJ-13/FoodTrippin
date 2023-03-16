@@ -13,18 +13,6 @@ class ILoveYouActivity : AppCompatActivity() {
     setContentView(viewBinding.root)
 
         viewBinding.homeBtn.setOnClickListener(View.OnClickListener {
-            val intent1 = Intent(this, MainActivity::class.java)
-            intent1.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-
-            val intent2 = Intent(this, HomePageActivity::class.java)
-            intent2.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-
-            val intent3 = Intent(applicationContext, HomePageActivity::class.java)
-
-            startActivity(intent1)
-            startActivity(intent2)
-            startActivity(intent3)
-
             finish()
         })
 

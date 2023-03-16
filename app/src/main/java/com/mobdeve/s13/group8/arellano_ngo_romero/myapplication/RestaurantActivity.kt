@@ -1,6 +1,7 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
 import android.content.Intent
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -54,11 +55,18 @@ class RestaurantActivity : AppCompatActivity()  {
         viewBinding.restaurantLikeBtn.setOnClickListener(View.OnClickListener {
             likeFlag = if(!likeFlag) {
                 viewBinding.restaurantLikeBtn.setImageResource(R.drawable.heart_on)
+                viewBinding.restaurantLikeBtn.setColorFilter(0xfa2a55, PorterDuff.Mode.SRC_ATOP);
                 true
             } else {
                 viewBinding.restaurantLikeBtn.setImageResource(R.drawable.heart_off)
                 false
             }
+        })
+
+        viewBinding.restaurantReviewBtn.setOnClickListener(View.OnClickListener{
+            val intent1 = Intent(this, ReviewActivity::class.java)
+            startActivity(intent1)
+
         })
     }
 }

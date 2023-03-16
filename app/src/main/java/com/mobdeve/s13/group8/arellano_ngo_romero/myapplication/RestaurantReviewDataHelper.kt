@@ -12,6 +12,7 @@ class RestaurantReviewDataHelper {
                 "August 19, 2023",
                 "Nice! Yummy!",
                 R.drawable.resto_placeholder,
+                3.0,
                 R.drawable.resto_placeholder
             ))
 
@@ -22,6 +23,7 @@ class RestaurantReviewDataHelper {
                 "March 14, 2023",
                 "Best girl ako",
                 R.drawable.resto_placeholder,
+                5.0,
                 R.drawable.resto_placeholder
             ))
 
@@ -32,6 +34,7 @@ class RestaurantReviewDataHelper {
                 "January 1, 2023",
                 "I need to find the gun devil",
                 R.drawable.resto_placeholder,
+                4.5,
                 R.drawable.resto_placeholder
             ))
 
