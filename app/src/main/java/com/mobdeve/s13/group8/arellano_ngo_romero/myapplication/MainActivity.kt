@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         val viewBinding : ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+
         viewBinding.loginBtn.setOnClickListener(View.OnClickListener {
             if(viewBinding.inputUserLoginTv.text.toString().isNotEmpty() && viewBinding.inputLogPasswordTv.text.toString().isNotEmpty())
             {
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         viewBinding.tempBtn2.setOnClickListener(View.OnClickListener {
-            val intent = Intent(applicationContext, ReviewActivity::class.java)
+            val intent = Intent(applicationContext, ProfilemyreviewsActivity::class.java)
             this.startActivity(intent)
         })
     }
