@@ -1,234 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/headerLl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FF9C5C"
-        android:gravity="center_vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <RelativeLayout
+            android:id="@+id/headerLl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF9C5C"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/sidebar_nav"
+            <ImageButton
+                android:id="@+id/sidebar_nav"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/orange"
+                android:scaleType="fitXY"
+                android:src="@drawable/sidebar_nav" />
+
+            <ImageView
+                android:id="@+id/headerIconIv"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/white_logo" />
+
+        </RelativeLayout>
+
+        <RatingBar
+            android:id="@+id/ratingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:backgroundTint="@color/orange"
-            android:src="@drawable/sidebar_nav"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="16dp" />
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#FFDD00"
+            android:progressBackgroundTint="#FFE185"
+            android:progressTint="#FFC000"
+            android:secondaryProgressTint="#F6D87C"
+            app:layout_constraintBottom_toTopOf="@+id/restaurantNameLl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/leaveReviewLl"
+            app:layout_constraintVertical_bias="0.0" />
 
-        <ImageView
-            android:id="@+id/headerIconIv"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/white_logo" />
-
-    </RelativeLayout>
-
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#FFDD00"
-        android:progressBackgroundTint="#FFE185"
-        android:progressTint="#FFC000"
-        android:secondaryProgressTint="#F6D87C"
-        app:layout_constraintBottom_toTopOf="@+id/restaurantNameLl"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/leaveReviewLl"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <LinearLayout
-        android:id="@+id/leaveReviewLl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerLl">
-
-        <TextView
-            android:id="@+id/reviewTv1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito_bold"
-            android:text="Leave a Review"
-            android:textAlignment="center"
-            android:textColor="#FF9C5C"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/reviewTv2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="24dp"
-            android:fontFamily="@font/nunito_semibold"
-            android:text="Did you enjoy your Food Trip? Please leave a rating and a review for other foodies to see!"
-            android:textAlignment="center"
-            android:textColor="#FF9C5C"
-            android:textSize="14sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/restaurantNameLl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leaveReviewLl">
-
-        <TextView
-            android:id="@+id/restoTv"
+        <LinearLayout
+            android:id="@+id/leaveReviewLl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito_bold"
-            android:text="How was your experience with"
-            android:textAlignment="center"
-            android:textColor="#3A8182"
-            android:textSize="16sp" />
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerLl">
 
-        <TextView
-            android:id="@+id/restoNameTv"
-            android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/reviewTv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Leave a Review"
+                android:textAlignment="center"
+                android:textColor="#FF9C5C"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/reviewTv2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="24dp"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="Did you enjoy your Food Trip? Please leave a rating and a review for other foodies to see!"
+                android:textAlignment="center"
+                android:textColor="#FF9C5C"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/restaurantNameLl"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/leaveReviewLl">
+
+            <TextView
+                android:id="@+id/restoTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:text="How was your experience with"
+                android:textAlignment="center"
+                android:textColor="#3A8182"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/restoNameTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:text="[Restaurant Name]?"
+                android:textAlignment="center"
+                android:textColor="#3A8182"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/login_input_field"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantNameLl">
+
+            <EditText
+                android:id="@+id/reviewTextTv"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@null"
+                android:gravity="top"
+                android:hint="Please type a short review"
+                android:inputType="text|textMultiLine"
+                android:textColor="#000000"
+                android:textColorHint="#434141"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/addImgBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#FF9C5C"
             android:fontFamily="@font/nunito_bold"
-            android:text="[Restaurant Name]?"
-            android:textAlignment="center"
-            android:textColor="#3A8182"
-            android:textSize="16sp" />
-    </LinearLayout>
+            android:text="+ ADD IMAGE"
+            android:textColor="#FFFFFFFF"
+            app:cornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+        <LinearLayout
+            android:id="@+id/imagesLl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="88dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addImgBtn">
+
+            <ImageView
+                android:id="@+id/reviewImg1Iv"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:srcCompat="@drawable/borger"
+                tools:srcCompat="@drawable/borger" />
+
+            <ImageView
+                android:id="@+id/reviewImg2Iv"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:srcCompat="@drawable/resto8"
+                tools:srcCompat="@drawable/resto8" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:backgroundTint="#3A8182"
+            android:fontFamily="@font/nunito_bold"
+            android:paddingLeft="30dp"
+            android:paddingTop="10dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="10dp"
+            android:text="SUBMIT REVIEW"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:cornerRadius="50px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            tools:ignore="UnknownIdInLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/login_input_field"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restaurantNameLl">
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/sidebar_menu" />
 
-        <EditText
-            android:id="@+id/reviewTextTv"
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@null"
-            android:gravity="top"
-            android:hint="Please type a short review"
-            android:inputType="text|textMultiLine"
-            android:textColor="#000000"
-            android:textColorHint="#434141"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/addImgBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#FF9C5C"
-        android:fontFamily="@font/nunito_bold"
-        android:text="+ ADD IMAGE"
-        android:textColor="#FFFFFFFF"
-        app:cornerRadius="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <LinearLayout
-        android:id="@+id/imagesLl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="88dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addImgBtn">
-
-        <ImageView
-            android:id="@+id/reviewImg1Iv"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
-            android:visibility="gone"
-            app:srcCompat="@drawable/borger"
-            tools:srcCompat="@drawable/borger" />
-
-        <ImageView
-            android:id="@+id/reviewImg2Iv"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
-            android:visibility="gone"
-            app:srcCompat="@drawable/resto8"
-            tools:srcCompat="@drawable/resto8" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/submitBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:backgroundTint="#3A8182"
-        android:fontFamily="@font/nunito_bold"
-        android:paddingLeft="30dp"
-        android:paddingTop="10dp"
-        android:paddingRight="30dp"
-        android:paddingBottom="10dp"
-        android:text="SUBMIT REVIEW"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        app:cornerRadius="50px"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:ignore="UnknownIdInLayout" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-<com.google.android.material.navigation.NavigationView
-android:id="@+id/nav_view"
-android:layout_width="wrap_content"
-android:layout_height="match_parent"
-android:layout_gravity="start"
-app:menu="@menu/sidebar_menu" />
-
-    </androidx.drawerlayout.widget.DrawerLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
