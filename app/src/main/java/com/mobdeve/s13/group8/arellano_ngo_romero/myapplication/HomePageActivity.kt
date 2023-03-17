@@ -1,8 +1,10 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
+import android.view.Menu
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.PopupWindow
@@ -36,8 +38,8 @@ class HomePageActivity : AppCompatActivity() {
 
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding
-       val drawerLayout = viewBinding.drawerLayout
-       val navView = viewBinding.navView
+        val drawerLayout = viewBinding.drawerLayout
+        val navView = viewBinding.navView
 
         // Set a click listener for the hamburger icon to open the sidebar
         viewBinding.sidebarNav.setOnClickListener {
@@ -70,6 +72,7 @@ class HomePageActivity : AppCompatActivity() {
                 else -> false
             }
         }
+        navView.itemIconTintList = null
 
         //SIDEBAR CODE
 
@@ -78,6 +81,28 @@ class HomePageActivity : AppCompatActivity() {
             showFilterPopup()
         }
     }
+
+//    override fun onResume() {
+//        super.onResume()
+//
+//        // Get the current activity from the activity stack
+//        val currentActivity = (this.applicationContext as? MyApplication)?.getCurrentActivity()
+//
+//        // Set the visibility of the menu items based on the current activity
+//        when (currentActivity) {
+//            is HomePageActivity -> {
+//                viewBinding.navView.menu.findItem(R.id.menu_home).isVisible = true
+//                viewBinding.navView.menu.findItem(R.id.menu_profile).isVisible = true
+//                viewBinding.navView.menu.findItem(R.id.menu_logout).isVisible = true
+//            }
+//            else -> {
+//                viewBinding.navView.menu.findItem(R.id.menu_home).isVisible = true
+//                viewBinding.navView.menu.findItem(R.id.menu_profile).isVisible = true
+//                viewBinding.navView.menu.findItem(R.id.menu_logout).isVisible = true
+//            }
+//        }
+//    }
+
 
     private fun showFilterPopup() {
         popupBinding = PopupRestaurantfilterBinding.inflate(layoutInflater)
