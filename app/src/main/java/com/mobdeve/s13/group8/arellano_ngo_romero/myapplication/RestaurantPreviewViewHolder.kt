@@ -9,6 +9,7 @@ class RestaurantPreviewViewHolder (private val viewBinding: ItemlayoutRestaurant
 
     fun bindData(restaurant: RestaurantPreviewModel) {
         this.viewBinding.profileLikedRestaurantNameTv.text = restaurant.name
+        this.viewBinding.profileRatingTv.text = restaurant.rating.toString()
         this.viewBinding.profileLikedLocationTv.text = restaurant.location
         this.viewBinding.profileLikedCuisinetypeTv.text = restaurant.cuisineType
         this.viewBinding.profileLikedDiningtypeTv.text = restaurant.diningType
