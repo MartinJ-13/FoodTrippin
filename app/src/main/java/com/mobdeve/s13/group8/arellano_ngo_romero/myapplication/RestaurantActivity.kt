@@ -1,8 +1,10 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -23,7 +25,7 @@ class RestaurantActivity : AppCompatActivity()  {
     private lateinit var reviewAdapter: RestaurantReviewAdapter
     private lateinit var menuAdapter: RestaurantMenuAdapter
 
-    private lateinit var viewBinding: ActivityProfilemyreviewsBinding
+    private lateinit var viewBinding: ActivityRestaurantBinding
 
     private lateinit var reviewRecyclerView: RecyclerView
     private lateinit var menuRecyclerView: RecyclerView
@@ -128,4 +130,25 @@ class RestaurantActivity : AppCompatActivity()  {
 
         })
     }
+
+//    override fun onResume() {
+//        super.onResume()
+//
+//        // Get the current activity from the activity stack
+//        val currentActivity = (this.applicationContext as? MyApplication)?.getCurrentActivity()
+//
+//        // Set the visibility of the menu items based on the current activity
+//        when (currentActivity) {
+//            is RestaurantActivity -> {
+//                viewBinding.navView.menu.findItem(R.id.menu_home).isVisible = true
+//                viewBinding.navView.menu.findItem(R.id.menu_profile).isVisible = true
+//                viewBinding.navView.menu.findItem(R.id.menu_logout).isVisible = true
+//            }
+//            else -> {
+//                viewBinding.navView.menu.findItem(R.id.menu_home).isVisible = true
+//                viewBinding.navView.menu.findItem(R.id.menu_profile).isVisible = true
+//                viewBinding.navView.menu.findItem(R.id.menu_logout).isVisible = true
+//            }
+//        }
+//    }
 }

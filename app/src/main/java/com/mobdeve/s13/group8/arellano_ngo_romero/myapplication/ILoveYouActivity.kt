@@ -1,13 +1,17 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityIloveyouBinding
 
 class ILoveYouActivity : AppCompatActivity() {
+
+    private lateinit var viewBinding : ActivityIloveyouBinding
     override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     val viewBinding : ActivityIloveyouBinding = ActivityIloveyouBinding.inflate(layoutInflater)
@@ -77,4 +81,25 @@ class ILoveYouActivity : AppCompatActivity() {
 
 
     }
+
+//    override fun onResume() {
+//        super.onResume()
+//
+//        // Get the current activity from the activity stack
+//        val currentActivity = (this.applicationContext as? MyApplication)?.getCurrentActivity()
+//
+//        // Set the visibility of the menu items based on the current activity
+//        when (currentActivity) {
+//            is ILoveYouActivity -> {
+//                viewBinding.navView.menu.findItem(R.id.menu_home).isVisible = true
+//                viewBinding.navView.menu.findItem(R.id.menu_profile).isVisible = true
+//                viewBinding.navView.menu.findItem(R.id.menu_logout).isVisible = true
+//            }
+//            else -> {
+//                viewBinding.navView.menu.findItem(R.id.menu_home).isVisible = true
+//                viewBinding.navView.menu.findItem(R.id.menu_profile).isVisible = true
+//                viewBinding.navView.menu.findItem(R.id.menu_logout).isVisible = true
+//            }
+//        }
+//    }
 }
