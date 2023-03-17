@@ -131,24 +131,4 @@ class RestaurantActivity : AppCompatActivity()  {
         })
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//
-//        // Get the current activity from the activity stack
-//        val currentActivity = (this.applicationContext as? MyApplication)?.getCurrentActivity()
-//
-//        // Set the visibility of the menu items based on the current activity
-//        when (currentActivity) {
-//            is RestaurantActivity -> {
-//                viewBinding.navView.menu.findItem(R.id.menu_home).isVisible = true
-//                viewBinding.navView.menu.findItem(R.id.menu_profile).isVisible = true
-//                viewBinding.navView.menu.findItem(R.id.menu_logout).isVisible = true
-//            }
-//            else -> {
-//                viewBinding.navView.menu.findItem(R.id.menu_home).isVisible = true
-//                viewBinding.navView.menu.findItem(R.id.menu_profile).isVisible = true
-//                viewBinding.navView.menu.findItem(R.id.menu_logout).isVisible = true
-//            }
-//        }
-//    }
 }

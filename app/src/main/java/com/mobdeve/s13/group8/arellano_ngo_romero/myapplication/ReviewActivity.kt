@@ -119,25 +119,5 @@ class ReviewActivity : AppCompatActivity(){
                 Toast.makeText(this, "Please leave a review and upload at least 1 photo!", Toast.LENGTH_SHORT).show()
         })
     }
-
-//    override fun onResume() {
-//        super.onResume()
-//
-//        // Get the current activity from the activity stack
-//        val currentActivity = (this.applicationContext as? MyApplication)?.getCurrentActivity()
-//
-//        // Set the visibility of the menu items based on the current activity
-//        when (currentActivity) {
-//            is ReviewActivity -> {
-//                viewBinding.navView.menu.findItem(R.id.menu_home).isVisible = true
-//                viewBinding.navView.menu.findItem(R.id.menu_profile).isVisible = true
-//                viewBinding.navView.menu.findItem(R.id.menu_logout).isVisible = true
-//            }
-//            else -> {
-//                viewBinding.navView.menu.findItem(R.id.menu_home).isVisible = true
-//                viewBinding.navView.menu.findItem(R.id.menu_profile).isVisible = true
-//                viewBinding.navView.menu.findItem(R.id.menu_logout).isVisible = true
-//            }
-//        }
-//    }
+    
 }
