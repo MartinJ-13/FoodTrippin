@@ -35,14 +35,32 @@ class ProfileLikedActivity : AppCompatActivity()  {
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_home -> {
-                    val intent = Intent(this, HomePageActivity::class.java)
-                    startActivity(intent)
+                    val intent1 = Intent(this, MainActivity::class.java)
+                    intent1.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent1)
+
+                    val intent2 = Intent(this, HomePageActivity::class.java)
+                    intent2.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent2)
+
+                    finish()
+
                     drawerLayout.closeDrawer(GravityCompat.START) // close the drawer layout
                     true
                 }
                 R.id.menu_profile -> {
-                    val intent = Intent(this, ProfilemyreviewsActivity::class.java)
-                    startActivity(intent)
+                    val intent1 = Intent(this, MainActivity::class.java)
+                    intent1.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent1)
+
+                    val intent2 = Intent(this, HomePageActivity::class.java)
+                    intent2.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent2)
+
+                    val intent3 = Intent(this, ProfilemyreviewsActivity::class.java)
+                    startActivity(intent3)
+
+                    finish()
                     drawerLayout.closeDrawer(GravityCompat.START) // close the drawer layout
                     true
                 }

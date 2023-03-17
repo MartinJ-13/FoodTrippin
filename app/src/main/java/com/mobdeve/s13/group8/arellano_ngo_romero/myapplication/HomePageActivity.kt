@@ -55,6 +55,7 @@ class HomePageActivity : AppCompatActivity() {
                     val intent = Intent(this, ProfilemyreviewsActivity::class.java)
                     startActivity(intent)
                     drawerLayout.closeDrawer(GravityCompat.START) // close the drawer layout
+
                     true
                 }
                 R.id.menu_logout -> {
