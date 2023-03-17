@@ -97,6 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nunito"
+                android:maxWidth="200dp"
                 android:text="Review"
                 android:textColor="#404040"
                 android:textSize="16sp" />

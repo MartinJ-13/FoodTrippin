@@ -10,7 +10,7 @@ class ReviewDataHelper {
                 Review(
                     "Morbius",
                     "Kinda Mid",
-                    "Restaurant Name",
+                    "Jollibee",
                     "March 13, 2023",
                     3.0,
                     R.drawable.img1,
@@ -24,7 +24,7 @@ class ReviewDataHelper {
                 Review(
                     "Morbius",
                     "7/10 Too much cheese",
-                    "Restaurant Name",
+                    "McDonalds",
                     "March 13, 2023",
                     3.5,
                     R.drawable.img1,

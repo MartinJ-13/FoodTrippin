@@ -48,8 +48,6 @@ class HomePageActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_home -> {
-                    val intent = Intent(this, HomePageActivity::class.java)
-                    startActivity(intent)
                     drawerLayout.closeDrawer(GravityCompat.START) // close the drawer layout
                     true
                 }
@@ -61,7 +59,10 @@ class HomePageActivity : AppCompatActivity() {
                 }
                 R.id.menu_logout -> {
                     val intent = Intent(this, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
+                    finish()
+
                     drawerLayout.closeDrawer(GravityCompat.START) // close the drawer layout
                     true
                 }

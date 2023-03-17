@@ -40,14 +40,24 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
                     true
                 }
                 R.id.menu_profile -> {
-                    val intent = Intent(this, ProfilemyreviewsActivity::class.java)
-                    startActivity(intent)
+                    val intent1 = Intent(this, ProfilemyreviewsActivity::class.java)
+
+                    val intent2 = Intent(this, HomePageActivity::class.java)
+                    intent2.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+
+                    startActivity(intent2)
+                    startActivity(intent1)
+
+                    finish()
+
                     drawerLayout.closeDrawer(GravityCompat.START) // close the drawer layout
                     true
                 }
                 R.id.menu_logout -> {
                     val intent = Intent(this, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
+                    finish()
                     drawerLayout.closeDrawer(GravityCompat.START) // close the drawer layout
                     true
                 }
