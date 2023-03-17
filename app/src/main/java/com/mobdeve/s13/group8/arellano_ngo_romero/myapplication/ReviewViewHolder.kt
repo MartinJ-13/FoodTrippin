@@ -9,7 +9,9 @@ class ReviewViewHolder(private val viewBinding: ItemlayoutProfilemyreviewsBindin
         this.viewBinding.reviewReviewTv.text = review.review
         this.viewBinding.reviewTitleTv.text = review.title
         this.viewBinding.reviewDatePostedTv.text = review.date
+        this.viewBinding.reviewRestoNameTv.text = "Review for: " + review.restaurant
         this.viewBinding.reviewUserIconIv.setImageResource(review.imageId)
+        this.viewBinding.reviewStarsRatingTv.text = review.rating.toString()
         this.viewBinding.reviewReviewImage1Iv.setImageResource(review.reviewPicID1)
         this.viewBinding.reviewReviewImage2Iv.setImageResource(review.reviewPicID2)
     }

@@ -10,10 +10,11 @@ class ReviewDataHelper {
                 Review(
                     "Morbius",
                     "Kinda Mid",
+                    "Restaurant Name",
                     "March 13, 2023",
-                    5,
+                    3.0,
                     R.drawable.img1,
-                    "Some of the restaurants are a bit boring, but most of them are varied enough. Overall a decent itinerary.",
+                    "Some of the items are a bit boring, but most of them are varied enough. Overall a decent restaurant.",
                     R.drawable.borger,
                     R.drawable.borger
                 )
@@ -23,10 +24,11 @@ class ReviewDataHelper {
                 Review(
                     "Morbius",
                     "7/10 Too much cheese",
+                    "Restaurant Name",
                     "March 13, 2023",
-                    5,
+                    3.5,
                     R.drawable.img1,
-                    "Some of the restaurants are a bit boring, but most of them are varied enough. Overall a decent itinerary.",
+                    "Cheese is way too much. Shame since the patty is good.",
                     R.drawable.borger,
                     R.drawable.borger
                 )

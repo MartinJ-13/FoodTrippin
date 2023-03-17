@@ -7,17 +7,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityProfilemyreviewsBinding
+import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityProfilelikedBinding
 
-class ProfilemyreviewsActivity : AppCompatActivity()  {
-    private lateinit var data: ArrayList<Review>
-    private lateinit var myAdapter: ReviewAdapter
-    private lateinit var viewBinding: ActivityProfilemyreviewsBinding
+class ProfileLikedActivity : AppCompatActivity()  {
+
+    private lateinit var data: ArrayList<RestaurantPreviewModel>
+    private lateinit var myAdapter: RestaurantPreviewAdapter
+    private lateinit var viewBinding: ActivityProfilelikedBinding
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewBinding: ActivityProfilemyreviewsBinding = ActivityProfilemyreviewsBinding.inflate(layoutInflater)
+        val viewBinding: ActivityProfilelikedBinding = ActivityProfilelikedBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
         //SIDEBAR CODE
@@ -57,15 +58,14 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
 
         //SIDEBAR CODE
 
-        this.data = ReviewDataHelper.generateData()
-        this.recyclerView = viewBinding.profileMyReviewsRecyclerView
-        this.myAdapter = ReviewAdapter(data)
+        this.data = RestaurantPreviewDataHelper.loadData()
+        this.recyclerView = viewBinding.profileLikedRecyclerView
+        this.myAdapter = RestaurantPreviewAdapter(data)
         this.recyclerView.adapter = myAdapter
         this.recyclerView.layoutManager = LinearLayoutManager(this)
 
-        viewBinding.profileLikedBtn.setOnClickListener(View.OnClickListener {
-            val intent = Intent(applicationContext, ProfileLikedActivity::class.java)
-            this.startActivity(intent)
+        viewBinding.profileMyReviewsBtn.setOnClickListener(View.OnClickListener {
+            finish()
         })
 
     }

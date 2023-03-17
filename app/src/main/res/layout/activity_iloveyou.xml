@@ -13,25 +13,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/homeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:backgroundTint="#3A8182"
-        android:fontFamily="@font/nunito_bold"
-        android:paddingLeft="30dp"
-        android:paddingTop="10dp"
-        android:paddingRight="30dp"
-        android:paddingBottom="10dp"
-        android:text="RETURN HOME"
-        android:textSize="16sp"
-        app:cornerRadius="50px"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/messageTv"
-        app:layout_constraintVertical_bias="0.100000024" />
+        <Button
+            android:id="@+id/homeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="#3A8182"
+            android:fontFamily="@font/nunito_bold"
+            android:paddingLeft="30dp"
+            android:paddingTop="10dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="10dp"
+            android:text="RETURN HOME"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:cornerRadius="50px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/messageTv"
+            app:layout_constraintVertical_bias="0.100000024" />
 
     <RelativeLayout
         android:id="@+id/headerLl"
@@ -45,33 +46,34 @@
 
         <ImageButton
             android:id="@+id/sidebar_nav"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
             android:background="@color/white"
             android:backgroundTint="@color/orange"
-            android:src="@drawable/sidebar_nav"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="16dp" />
+            android:scaleType="fitXY"
+            android:src="@drawable/sidebar_nav" />
 
         <ImageView
             android:id="@+id/headerIconIv"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_centerInParent="true"
             android:src="@drawable/white_logo" />
 
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/smileIv"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerLl"
-        app:srcCompat="@drawable/smile" />
+        <ImageView
+            android:id="@+id/smileIv"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerLl"
+            app:srcCompat="@drawable/smile" />
 
     <TextView
         android:id="@+id/messageTv"
