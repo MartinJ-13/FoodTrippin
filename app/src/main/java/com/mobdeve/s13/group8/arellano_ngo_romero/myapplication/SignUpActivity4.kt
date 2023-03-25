@@ -1,6 +1,7 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -13,6 +14,12 @@ class SignUpActivity4 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val viewBinding : ActivitySignup4Binding = ActivitySignup4Binding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+
+        val imageBitmap = intent.getParcelableExtra<Bitmap>("imageBitmap")
+
+        if(imageBitmap != null)
+            viewBinding.userImgIv.setImageBitmap(imageBitmap)
 
         viewBinding.finishBtn.setOnClickListener(View.OnClickListener {
             val intent1 = Intent(this, MainActivity::class.java)
