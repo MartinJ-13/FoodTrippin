@@ -17,9 +17,14 @@ class SignUpActivity4 : AppCompatActivity() {
 
 
         val imageBitmap = intent.getParcelableExtra<Bitmap>("imageBitmap")
+        val username =  intent.getStringExtra("username").toString()
+        val email = intent.getStringExtra("email").toString()
+        val password = intent.getStringExtra("password").toString()
 
         if(imageBitmap != null)
             viewBinding.userImgIv.setImageBitmap(imageBitmap)
+        if(username != null)
+            viewBinding.congratsUserTv.text = "@$username!"
 
         viewBinding.finishBtn.setOnClickListener(View.OnClickListener {
             val intent1 = Intent(this, MainActivity::class.java)

@@ -40,7 +40,7 @@
 
 
         <LinearLayout
-            android:id="@+id/Password"
+            android:id="@+id/Username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -82,7 +82,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Password">
+            app:layout_constraintTop_toBottomOf="@+id/Username">
 
             <TextView
                 android:id="@+id/loginPwTv"

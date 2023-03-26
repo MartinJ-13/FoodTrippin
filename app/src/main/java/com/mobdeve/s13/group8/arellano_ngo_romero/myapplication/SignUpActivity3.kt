@@ -15,10 +15,16 @@ class SignUpActivity3 : AppCompatActivity() {
     }
     private val takePicture = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
+            val username =  intent.getStringExtra("username").toString()
+            val email = intent.getStringExtra("email").toString()
+            val password = intent.getStringExtra("password").toString()
             val data: Intent? = result.data
             val imageBitmap = data?.extras?.get("data") as Bitmap
             val intent = Intent(this, SignUpActivity4::class.java)
             intent.putExtra("imageBitmap", imageBitmap)
+            intent.putExtra("username", username)
+            intent.putExtra("email", email)
+            intent.putExtra("password", password)
             startActivity(intent)
         }
     }
@@ -30,6 +36,7 @@ class SignUpActivity3 : AppCompatActivity() {
 
         viewBinding.photoBtn.setOnClickListener(View.OnClickListener {
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+
             if (takePictureIntent.resolveActivity(packageManager) != null) {
                 takePicture.launch(takePictureIntent)
             }

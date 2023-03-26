@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "194756694730",
+    "project_id": "food-trippin-prototype",
+    "storage_bucket": "food-trippin-prototype.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194756694730:android:9e6db90a18eca79622da33",
+        "android_client_info": {
+          "package_name": "com.mobdeve.s13.group8.arellano_ngo_romero.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194756694730-vnuiamqqvcgvm6aevjj2qenvmik1ucqi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeFhX052Z0HfK09vM47uKKhdqnPQSfrV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "194756694730-vnuiamqqvcgvm6aevjj2qenvmik1ucqi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

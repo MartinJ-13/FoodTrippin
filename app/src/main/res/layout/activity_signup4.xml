@@ -23,7 +23,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/congratsTv"
+        app:layout_constraintTop_toBottomOf="@+id/congratsTv2"
         app:layout_constraintVertical_bias="0.100000024" />
 
     <ImageView
@@ -43,26 +43,12 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/rounded_search_border"
         android:clipToOutline="true"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoIv"
-        app:srcCompat="@drawable/img1"
-        tools:srcCompat="@drawable/img1" />
-
-    <TextView
-        android:id="@+id/congratsTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/nunito"
-        android:text="You can now start exploring new \n restaurants. Have fun!"
-        android:textAlignment="center"
-        android:textColor="#101010"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/congratsTv2" />
+        app:srcCompat="@drawable/avatar"
+        tools:srcCompat="@drawable/avatar" />
 
     <TextView
         android:id="@+id/congratsTv2"
@@ -70,11 +56,41 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/nunito"
-        android:text="Congratulations, @username, \n for successfully creating your \n account! "
+        android:text="You can now start exploring new \n restaurants. Have fun!"
+        android:textAlignment="center"
+        android:textColor="#101010"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/congratsTv1" />
+
+    <TextView
+        android:id="@+id/congratsTv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/nunito"
+        android:text="Congratulations,"
         android:textAlignment="center"
         android:textColor="#101010"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userImgIv" />
+
+    <TextView
+        android:id="@+id/congratsUserTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito"
+        android:text=" @username!"
+        android:textAlignment="center"
+        android:textColor="#101010"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/congratsTv2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/congratsTv1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

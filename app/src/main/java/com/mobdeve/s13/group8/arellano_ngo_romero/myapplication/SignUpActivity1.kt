@@ -8,19 +8,38 @@ import androidx.appcompat.app.AppCompatActivity
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivitySignup1Binding
 
 class SignUpActivity1 : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         val viewBinding : ActivitySignup1Binding = ActivitySignup1Binding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+        //function check if the email given is not empty and in proper format (address@mail.com)
+        //uses the library EmailValidator (commons-validator)
+
+        fun String.isValidEmail() =
+            Regex("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}").matches(this)
+
         viewBinding.nextBtn.setOnClickListener(View.OnClickListener {
-            if(viewBinding.inputUserTv.text.toString().isNotEmpty())
+
+            val username = viewBinding.inputUserTv.text.toString()
+            val email = viewBinding.inputUserTv2.text.toString()
+
+            if(username.isNotEmpty() && email.isNotEmpty())
             {
-                val intent = Intent(applicationContext, SignUpActivity2::class.java)
-                this.startActivity(intent)
+                if(email.isValidEmail()) {
+                    val intent = Intent(applicationContext, SignUpActivity2::class.java)
+                    intent.putExtra("username", username)
+                    intent.putExtra("email", email)
+                    startActivity(intent)
+                    this.startActivity(intent)
+                }
+                else
+                    Toast.makeText(this, "Email is invalid", Toast.LENGTH_SHORT).show()
             }
             else
-                Toast.makeText(this, "Please enter your Username", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please enter your Username and Email", Toast.LENGTH_SHORT).show()
         })
 
         viewBinding.loginTv.setOnClickListener(View.OnClickListener {

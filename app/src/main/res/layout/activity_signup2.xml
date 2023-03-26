@@ -54,7 +54,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/Password"
+            android:id="@+id/Username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -96,7 +96,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Password">
+            app:layout_constraintTop_toBottomOf="@+id/Username">
 
             <TextView
                 android:id="@+id/password1Tv2"
@@ -133,7 +133,7 @@
             android:paddingTop="10dp"
             android:paddingRight="42dp"
             android:paddingBottom="10dp"
-            android:text="Create Account"
+            android:text="NEXT"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             app:cornerRadius="30px"

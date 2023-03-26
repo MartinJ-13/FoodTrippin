@@ -13,11 +13,26 @@ class SignUpActivity2 : AppCompatActivity() {
         val viewBinding : ActivitySignup2Binding = ActivitySignup2Binding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+        val username =  intent.getStringExtra("username").toString()
+        val email = intent.getStringExtra("email").toString()
+
+
         viewBinding.createBtn.setOnClickListener(View.OnClickListener {
-            if(viewBinding.inputPassTv.text.toString().isNotEmpty() && viewBinding.inputPassTv2.text.toString().isNotEmpty())
+            val pw1 = viewBinding.inputPassTv.text.toString()
+            val pw2 = viewBinding.inputPassTv2.text.toString()
+
+            if(pw1.isNotEmpty() && pw2.isNotEmpty() )
             {
-                val intent = Intent(applicationContext, SignUpActivity3::class.java)
-                this.startActivity(intent)
+                if(pw1 == pw2) {
+                    val intent = Intent(applicationContext, SignUpActivity3::class.java)
+                    intent.putExtra("username", username)
+                    intent.putExtra("email", email)
+                    intent.putExtra("password", pw1)
+                    this.startActivity(intent)
+                }
+                else {
+                    Toast.makeText(this, "Passwords do not match!", Toast.LENGTH_SHORT).show()
+                }
             }
             else{
                 Toast.makeText(this, "Please enter your password", Toast.LENGTH_SHORT).show()
