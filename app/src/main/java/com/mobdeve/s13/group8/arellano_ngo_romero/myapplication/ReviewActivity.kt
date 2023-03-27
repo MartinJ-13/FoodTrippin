@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityReviewBinding
 
 class ReviewActivity : AppCompatActivity(){
@@ -61,6 +62,7 @@ class ReviewActivity : AppCompatActivity(){
                     true
                 }
                 R.id.menu_logout -> {
+                    FirebaseAuth.getInstance().signOut()
                     val intent = Intent(this, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
