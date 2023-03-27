@@ -43,13 +43,16 @@ class SignUpActivity3 : AppCompatActivity() {
         })
 
         viewBinding.skipBtn.setOnClickListener(View.OnClickListener {
-            val intent = Intent(applicationContext, SignUpActivity4::class.java)
+
             val username =  intent.getStringExtra("username").toString()
             val email = intent.getStringExtra("email").toString()
             val password = intent.getStringExtra("password").toString()
+          //  val imageBitmap = null
+            val intent = Intent(this, SignUpActivity4::class.java)
             intent.putExtra("username", username)
             intent.putExtra("email", email)
             intent.putExtra("password", password)
+          //  intent.putExtra("imageBitmap", null)
             this.startActivity(intent)
         })
         viewBinding.loginTv.setOnClickListener(View.OnClickListener {
