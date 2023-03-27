@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF9C5C"
+    tools:context=".TakePhotoActivity">
+
+    <ImageView
+        android:id="@+id/logo_white"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/white_logo" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-30dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Eat like a local!"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_white" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/LoginLayoutLl"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/white_rounded_edge"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_white"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Upload your \n profile picture!"
+            android:textAlignment="center"
+            android:textColor="#3A8182"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/buttonsLl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userImageIv">
+
+            <Button
+                android:id="@+id/galleryBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#FF9C5C"
+                android:fontFamily="@font/nunito_bold"
+                android:gravity="center_horizontal"
+                android:paddingLeft="32dp"
+                android:paddingTop="10dp"
+                android:paddingRight="27dp"
+                android:paddingBottom="10dp"
+                android:text="OPEN GALLERY"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:cornerRadius="30px"
+                app:icon="@drawable/baseline_photo_library_24" />
+
+            <Button
+                android:id="@+id/photoBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#FF9C5C"
+                android:fontFamily="@font/nunito_bold"
+                android:gravity="center_horizontal"
+                android:paddingLeft="32dp"
+                android:paddingTop="10dp"
+                android:paddingRight="32dp"
+                android:paddingBottom="10dp"
+                android:text="OPEN CAMERA"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:cornerRadius="30px"
+                app:icon="@drawable/baseline_photo_camera_24" />
+
+            <Button
+                android:id="@+id/savePhotoBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#3A8182"
+                android:fontFamily="@font/nunito_bold"
+                android:gravity="center"
+                android:paddingLeft="40dp"
+                android:paddingTop="10dp"
+                android:paddingRight="40dp"
+                android:paddingBottom="10dp"
+                android:text="SAVE PHOTO"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:cornerRadius="30px"
+                app:icon="@drawable/baseline_photo_library_24" />
+
+            <Button
+                android:id="@+id/skipBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#FD5050"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingLeft="80dp"
+                android:paddingTop="10dp"
+                android:paddingRight="80dp"
+                android:paddingBottom="10dp"
+                android:text="CANCEL"
+                android:textColor="#FFFFFFFF"
+                android:textSize="16sp"
+                app:cornerRadius="30px" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/alternateLl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/skipBtn" />
+
+        <ImageView
+            android:id="@+id/userImageIv"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="24dp"
+            android:clipToOutline="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:srcCompat="@drawable/avatar"
+            tools:srcCompat="@drawable/avatar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

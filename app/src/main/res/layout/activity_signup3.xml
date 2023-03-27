@@ -4,140 +4,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF9C5C">
-<!--    tools:context=".SignUpActivity3"-->
+    android:background="#FFFFFF">
+
+    <Button
+        android:id="@+id/finishBtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FF9C5C"
+        android:fontFamily="@font/nunito_bold"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:text="SET UP PROFILE PIC"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:cornerRadius="30px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/congratsTv3" />
+
+    <Button
+        android:id="@+id/finishBtn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#3A8182"
+        android:fontFamily="@font/nunito_bold"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:text="PROCEED TO LOGIN"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:cornerRadius="30px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/finishBtn2" />
 
     <ImageView
-        android:id="@+id/logo_white"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/logoIv"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/white_logo" />
+        app:srcCompat="@drawable/orange_logo" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-40dp"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Eat like a local!"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
+    <ImageView
+        android:id="@+id/userImgIv"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:clipToOutline="true"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_white" />
+        app:layout_constraintTop_toBottomOf="@+id/logoIv"
+        app:srcCompat="@drawable/smile"
+        tools:srcCompat="@drawable/smile" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/LoginLayoutLl"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/white_rounded_edge"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_white">
+    <TextView
+        android:id="@+id/congratsTv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/nunito"
+        android:text="Finish setting up your account by \n uploading your profile picture!"
+        android:textAlignment="center"
+        android:textColor="#101010"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/congratsTv1" />
 
+    <TextView
+        android:id="@+id/congratsTv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/nunito"
+        android:text="Congratulations, @username! \n You have successfully \n created your account."
+        android:textAlignment="center"
+        android:textColor="#101010"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userImgIv" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/nunito_bold"
-            android:text="Join the Food Trippin \n community!"
-            android:textAlignment="center"
-            android:textColor="#FF873A"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/photoBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#3A8182"
-            android:fontFamily="@font/nunito_bold"
-            android:paddingLeft="42dp"
-            android:paddingTop="10dp"
-            android:paddingRight="42dp"
-            android:paddingBottom="10dp"
-            android:text="TAKE PHOTO"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            app:cornerRadius="30px"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.100000024" />
-
-        <Button
-            android:id="@+id/skipBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FF3C3C"
-            android:fontFamily="@font/nunito_bold"
-            android:paddingLeft="54dp"
-            android:paddingTop="10dp"
-            android:paddingRight="54dp"
-            android:paddingBottom="10dp"
-            android:text="SKIP STEP"
-            android:textColor="#FFFFFFFF"
-            android:textSize="16sp"
-            app:cornerRadius="30px"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/photoBtn"
-            app:layout_constraintVertical_bias="0.050000012" />
-
-        <LinearLayout
-            android:id="@+id/alternateLl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/skipBtn">
-
-            <TextView
-                android:id="@+id/altTextTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/nunito_semibold"
-                android:text="Already have an account?"
-                android:textColor="#FF9C5C"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/loginTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/nunito_semibold"
-                android:text="Log in here"
-                android:textColor="#3A8182"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:srcCompat="@drawable/avatar"
-            tools:srcCompat="@drawable/avatar"
-            android:clipToOutline="true"
-            />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/congratsTv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/nunito"
+        android:text="Or you can proceed to login to \n start Food Trippin :)"
+        android:textAlignment="center"
+        android:textColor="#101010"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/congratsTv2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

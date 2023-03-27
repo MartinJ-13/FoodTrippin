@@ -47,7 +47,7 @@
             android:fontFamily="@font/nunito_bold"
             android:text="Join the Food Trippin \n community!"
             android:textAlignment="center"
-            android:textColor="#FF873A"
+            android:textColor="#3A8182"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/nunito_bold"
                 android:text="Password"
-                android:textColor="#FF873A"
+                android:textColor="#3A8182"
                 android:textSize="16sp" />
 
             <EditText
@@ -105,7 +105,7 @@
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/nunito_bold"
                 android:text="Confirm Password"
-                android:textColor="#FF873A"
+                android:textColor="#3A8182"
                 android:textSize="16sp" />
 
             <EditText
@@ -127,21 +127,20 @@
             android:id="@+id/createBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#3A8182"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="#FF873A"
             android:fontFamily="@font/nunito_bold"
             android:paddingLeft="42dp"
             android:paddingTop="10dp"
             android:paddingRight="42dp"
             android:paddingBottom="10dp"
-            android:text="NEXT"
+            android:text="CREATE ACCOUNT"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             app:cornerRadius="30px"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Password2"
-            app:layout_constraintVertical_bias="0.19999999" />
+            app:layout_constraintTop_toBottomOf="@+id/Password2" />
 
         <LinearLayout
             android:id="@+id/alternateLl"
@@ -160,7 +159,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/nunito_semibold"
                 android:text="Already have an account?"
-                android:textColor="#FF9C5C"
+                android:textColor="#3A8182"
                 android:textSize="16sp" />
 
             <TextView
@@ -171,7 +170,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/nunito_semibold"
                 android:text="Log in here"
-                android:textColor="#3A8182"
+                android:textColor="#FF873A"
                 android:textSize="16sp" />
         </LinearLayout>
 

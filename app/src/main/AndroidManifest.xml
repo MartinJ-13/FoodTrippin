@@ -38,6 +38,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
 
@@ -52,12 +53,12 @@
             android:launchMode="singleTask" />
 
         <activity
-            android:name=".SignUpActivity3"
+            android:name=".TakePhotoActivity"
             android:exported="true"
             android:launchMode="singleTask" />
 
         <activity
-            android:name=".SignUpActivity4"
+            android:name=".SignUpActivity3"
             android:exported="true"
             android:launchMode="singleTask" />
 

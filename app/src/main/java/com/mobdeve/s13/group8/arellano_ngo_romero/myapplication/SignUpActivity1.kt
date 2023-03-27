@@ -34,6 +34,7 @@ class SignUpActivity1 : AppCompatActivity() {
                     intent.putExtra("email", email)
                     startActivity(intent)
                     this.startActivity(intent)
+                    this.overridePendingTransition(0, 0);
                 }
                 else
                     Toast.makeText(this, "Email is invalid", Toast.LENGTH_SHORT).show()

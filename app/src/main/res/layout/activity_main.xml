@@ -56,7 +56,7 @@
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/nunito_bold"
                 android:text="Email Address"
-                android:textColor="#FF873A"
+                android:textColor="#3A8182"
                 android:textSize="16sp" />
 
             <EditText
@@ -91,7 +91,7 @@
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/nunito_bold"
                 android:text="Password"
-                android:textColor="#FF873A"
+                android:textColor="#3A8182"
                 android:textSize="16sp" />
 
             <EditText
@@ -109,12 +109,25 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
+        <CheckBox
+            android:id="@+id/stayLogInCb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="Stay logged in"
+            android:textColor="#404040"
+            app:layout_constraintBottom_toTopOf="@+id/loginBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/passwordLl" />
+
         <Button
             android:id="@+id/loginBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#3A8182"
+            android:layout_marginTop="65dp"
+            android:backgroundTint="#FF873A"
             android:fontFamily="@font/nunito_bold"
             android:paddingLeft="48dp"
             android:paddingTop="10dp"
@@ -122,7 +135,7 @@
             android:paddingBottom="10dp"
             android:text="LOGIN"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:cornerRadius="30px"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -145,7 +158,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/nunito_semibold"
                 android:text="Don't have an account?"
-                android:textColor="#FF9C5C"
+                android:textColor="#3A8182"
                 android:textSize="16sp" />
 
             <TextView
@@ -156,7 +169,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/nunito_semibold"
                 android:text="Sign up here"
-                android:textColor="#3A8182"
+                android:textColor="#FF873A"
                 android:textSize="16sp" />
         </LinearLayout>
 
