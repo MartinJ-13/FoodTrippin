@@ -88,7 +88,9 @@ class ProfileLikedActivity : AppCompatActivity()  {
         this.recyclerView.layoutManager = LinearLayoutManager(this)
 
         viewBinding.profileMyReviewsBtn.setOnClickListener(View.OnClickListener {
+            this.overridePendingTransition(0, 0);
             finish()
+            this.overridePendingTransition(0, 0);
         })
 
     }

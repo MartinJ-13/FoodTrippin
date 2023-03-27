@@ -78,6 +78,7 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
         viewBinding.profileLikedBtn.setOnClickListener(View.OnClickListener {
             val intent = Intent(applicationContext, ProfileLikedActivity::class.java)
             this.startActivity(intent)
+            this.overridePendingTransition(0, 0);
         })
 
     }
