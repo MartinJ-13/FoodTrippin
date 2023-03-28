@@ -10,7 +10,9 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityProfilemyreviewsBinding
+import com.squareup.picasso.Picasso
 
 class ProfilemyreviewsActivity : AppCompatActivity()  {
     private lateinit var data: ArrayList<Review>
@@ -18,10 +20,35 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
     private lateinit var viewBinding: ActivityProfilemyreviewsBinding
     private lateinit var recyclerView: RecyclerView
 
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var database: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val viewBinding: ActivityProfilemyreviewsBinding = ActivityProfilemyreviewsBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+        viewBinding.loadingPb2.visibility = View.VISIBLE
+
+        database = FirebaseFirestore.getInstance()
+        //Logged in user
+        val user = FirebaseAuth.getInstance().currentUser
+
+        val getUser = database.collection("users").document(user!!.uid)
+
+        if (user != null){
+            getUser.get().addOnSuccessListener { document ->
+                if(document != null) {
+                    val profilePic = document.getString("avatar")
+                    val username = document.getString("username")
+
+                    if(profilePic != null)
+                        Picasso.get().load(profilePic).into(viewBinding.reviewUserIconIv)
+                    viewBinding.loadingPb2.visibility = View.GONE
+                    viewBinding.profileMyReviewsUsernameTv.text = username
+
+                }
+            }
+        }
 
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding

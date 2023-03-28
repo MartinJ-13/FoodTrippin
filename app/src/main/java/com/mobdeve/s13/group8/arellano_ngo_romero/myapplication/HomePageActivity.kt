@@ -22,7 +22,7 @@ class HomePageActivity : AppCompatActivity() {
     private lateinit var myAdapter: RestaurantPreviewAdapter
     private lateinit var viewBinding: ActivityHomepageBinding
     private lateinit var recyclerView: RecyclerView
-
+    private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var popupBinding: PopupRestaurantfilterBinding
     private lateinit var popupWindow: PopupWindow
 
@@ -36,6 +36,12 @@ class HomePageActivity : AppCompatActivity() {
         myAdapter = RestaurantPreviewAdapter(data)
         recyclerView.adapter = myAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        //logged in user
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null){
+            val uid = user.uid
+        }
 
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding

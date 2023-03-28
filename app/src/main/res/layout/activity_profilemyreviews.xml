@@ -12,6 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ProgressBar
+            android:id="@+id/loadingPb2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -68,7 +79,7 @@
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 app:shapeAppearanceOverlay="@style/roundImageView_profile_profileBanner_userIcon"
-                app:srcCompat="@drawable/img1" />
+                app:srcCompat="@drawable/avatar" />
 
             <LinearLayout
                 android:id="@+id/profileBannerLl_usernameBio"
