@@ -16,8 +16,7 @@ import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.Acti
 class SignUpActivity2 : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database:  FirebaseFirestore
-   // private lateinit var storage: FirebaseStorage
-  //  private lateinit var imageUri: Uri
+
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         val viewBinding : ActivitySignup2Binding = ActivitySignup2Binding.inflate(layoutInflater)
@@ -34,7 +33,7 @@ class SignUpActivity2 : AppCompatActivity() {
         viewBinding.createBtn.setOnClickListener(View.OnClickListener {
             val pw1 = viewBinding.inputPassTv.text.toString()
             val pw2 = viewBinding.inputPassTv2.text.toString()
-
+            var uid = ""
             if(pw1.isNotEmpty() && pw2.isNotEmpty()) {
                 if(pw1.length >=6 ) {
                     if(pw1 == pw2) {
@@ -46,11 +45,12 @@ class SignUpActivity2 : AppCompatActivity() {
                                     val user = firebaseAuth.currentUser
 
                                     if (user != null){
+                                        uid = user.uid
                                         val userData = hashMapOf(
                                             "uid" to user.uid,
                                             "username" to username,
                                             "email" to email,
-                                            "avatar" to null
+                                            "avatar" to " "
                                         )
                                         database.collection("users")
                                             .document(user.uid)
@@ -70,6 +70,7 @@ class SignUpActivity2 : AppCompatActivity() {
 
                                     val intent = Intent(applicationContext, SignUpActivity3::class.java)
                                     intent.putExtra("username", username)
+                                    intent.putExtra("uid", uid)
                                     intent.putExtra("email", email)
                                     intent.putExtra("password", pw1)
                                     startActivity(intent)
