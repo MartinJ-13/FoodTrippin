@@ -9,7 +9,6 @@ class ReviewDataHelper {
             data.add(
                 Review(
                     "Morbius",
-                    "Kinda Mid",
                     "Jollibee",
                     "March 13, 2023",
                     3.0,
@@ -23,7 +22,6 @@ class ReviewDataHelper {
             data.add(
                 Review(
                     "Morbius",
-                    "7/10 Too much cheese",
                     "McDonalds",
                     "March 13, 2023",
                     3.5,
