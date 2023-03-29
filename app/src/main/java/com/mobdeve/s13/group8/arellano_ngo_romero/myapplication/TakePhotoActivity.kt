@@ -163,13 +163,3 @@ class TakePhotoActivity : AppCompatActivity() {
 }
 
 //finish all activities and headback to log in
-//            val username = intent.getStringExtra("username").toString()
-//            val email = intent.getStringExtra("email").toString()
-//            val password = intent.getStringExtra("password").toString()
-//            //  val imageBitmap = null
-//            val intent = Intent(this, SignUpActivity3::class.java)
-//            intent.putExtra("username", username)
-//            intent.putExtra("email", email)
-//            intent.putExtra("password", password)
-//            //  intent.putExtra("imageBitmap", null)
-//            this.startActivity(intent)

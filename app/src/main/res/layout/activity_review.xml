@@ -153,19 +153,33 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/addImgBtn"
+        <TextView
+            android:id="@+id/addPhotoTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="#FF9C5C"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/nunito_bold"
-            android:text="+ ADD IMAGE"
-            android:textColor="#FFFFFFFF"
-            app:cornerRadius="10dp"
+            android:text="Add Photo:"
+            android:textColor="#679D9E"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <Button
+            android:id="@+id/galleryImgBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:backgroundTint="#FF9C5C"
+            android:fontFamily="@font/nunito_bold"
+            android:text="FROM GALLERY"
+            android:textColor="#FFFFFFFF"
+            android:textSize="12sp"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/baseline_photo_library_24"
+            app:iconSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addPhotoTv" />
 
         <LinearLayout
             android:id="@+id/imagesLl"
@@ -176,7 +190,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addImgBtn">
+            app:layout_constraintTop_toBottomOf="@+id/galleryImgBtn">
 
             <ImageView
                 android:id="@+id/reviewImg1Iv"
@@ -205,7 +219,7 @@
             android:id="@+id/submitBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="36dp"
+            android:layout_marginTop="16dp"
             android:backgroundTint="#3A8182"
             android:fontFamily="@font/nunito_bold"
             android:paddingLeft="30dp"
@@ -216,12 +230,26 @@
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             app:cornerRadius="50px"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userImageIv"
+            app:layout_constraintTop_toBottomOf="@id/imagesLl"
             tools:ignore="UnknownIdInLayout" />
+
+        <Button
+            android:id="@+id/takeCamBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="#FE9B5C"
+            android:fontFamily="@font/nunito_bold"
+            android:text="TAKE PHOTO"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/baseline_photo_camera_24"
+            app:layout_constraintStart_toEndOf="@+id/galleryImgBtn"
+            app:layout_constraintTop_toBottomOf="@+id/addPhotoTv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

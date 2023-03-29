@@ -42,16 +42,6 @@
             tools:layout_editor_absoluteY="10dp">
 
             <TextView
-                android:id="@+id/review_titleTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nunito_bold"
-                android:text="Review Title"
-                android:textColor="#303030"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-
-            <TextView
                 android:id="@+id/review_byTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

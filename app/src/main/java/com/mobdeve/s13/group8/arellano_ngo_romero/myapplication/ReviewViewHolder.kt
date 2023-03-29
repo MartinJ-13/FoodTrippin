@@ -7,7 +7,6 @@ class ReviewViewHolder(private val viewBinding: ItemlayoutProfilemyreviewsBindin
 
     fun bindData(review: Review){
         this.viewBinding.reviewReviewTv.text = review.review
-        this.viewBinding.reviewTitleTv.text = review.title
         this.viewBinding.reviewDatePostedTv.text = review.date
         this.viewBinding.reviewRestoNameTv.text = review.restaurant
         this.viewBinding.reviewUserIconIv.setImageResource(review.imageId)
