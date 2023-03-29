@@ -7,7 +7,6 @@ class RestaurantReviewDataHelper {
 
             data.add(RestaurantReview(
                 R.drawable.sample_femaleavatar,
-                "Review Title 1",
                 "Denji",
                 "August 19, 2023",
                 "Nice! Yummy!",
@@ -18,7 +17,6 @@ class RestaurantReviewDataHelper {
 
             data.add(RestaurantReview(
                 R.drawable.sample_femaleavatar,
-                "Review Title 2",
                 "Power",
                 "March 14, 2023",
                 "Best girl ako",
@@ -29,7 +27,6 @@ class RestaurantReviewDataHelper {
 
             data.add(RestaurantReview(
                 R.drawable.sample_femaleavatar,
-                "Review Title 3",
                 "Aki",
                 "January 1, 2023",
                 "I need to find the gun devil",

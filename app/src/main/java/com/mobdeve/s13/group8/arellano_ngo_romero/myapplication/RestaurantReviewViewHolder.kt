@@ -10,7 +10,6 @@ class RestaurantReviewViewHolder (private val viewBinding: ItemlayoutRestaurantr
 
         this.viewBinding.reviewUserIconIv.setImageResource(restaurantReview.reviewerIcon)
         this.viewBinding.reviewByTv.text = "By: " + restaurantReview.reviewerName
-        this.viewBinding.reviewTitleTv.text = restaurantReview.reviewTitle
         this.viewBinding.reviewDatePostedTv.text = restaurantReview.reviewDate
         this.viewBinding.reviewReviewTv.text = restaurantReview.reviewReview
         this.viewBinding.reviewStarsTv.text = restaurantReview.reviewStars.toString()

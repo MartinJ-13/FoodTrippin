@@ -142,6 +142,7 @@ class RestaurantActivity : AppCompatActivity()  {
 
         viewBinding.restaurantReviewBtn.setOnClickListener(View.OnClickListener{
             val intent1 = Intent(this, ReviewActivity::class.java)
+            intent1.putExtra("restaurantName", restaurantName)
             startActivity(intent1)
 
         })
