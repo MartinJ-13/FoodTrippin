@@ -38,10 +38,24 @@ class RestaurantActivity : AppCompatActivity()  {
         val viewBinding: ActivityRestaurantBinding = ActivityRestaurantBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+
+        val restaurantName = intent.getStringExtra("restaurantName").toString()
+        val restaurantAddress = intent.getStringExtra("restaurantAddress").toString()
+        val restaurantCuisineType = intent.getStringExtra("restaurantCuisineType").toString()
+        val restaurantDiningType = intent.getStringExtra("restaurantDiningType").toString()
+        val restaurantRating = intent.getStringExtra("restaurantRating")
+
+        viewBinding.restaurantNameTv.text = restaurantName
+        viewBinding.restaurantAddressTv.text = restaurantAddress
+        viewBinding.restaurantCuisineTagTv.text = restaurantCuisineType
+        viewBinding.restaurantDIneTagTv.text = restaurantDiningType
+        viewBinding.restaurantRatingBar.rating = restaurantRating!!.toFloat()
+
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding
         val drawerLayout = viewBinding.drawerLayout
         val navView = viewBinding.navView
+
 
         // Set a click listener for the hamburger icon to open the sidebar
         viewBinding.sidebarNav.setOnClickListener {

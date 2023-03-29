@@ -11,7 +11,5 @@ class ProfileLikedViewHolder (private val viewBinding: ItemlayoutRestaurantcardB
         this.viewBinding.profileLikedLocationTv.text = profileLiked.restaurantLocation
         this.viewBinding.profileLikedCuisinetypeTv.text = profileLiked.restaurantCuisineType
         this.viewBinding.profileLikedDiningtypeTv.text = profileLiked.restaurantDiningType
-
     }
-
 }

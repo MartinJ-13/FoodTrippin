@@ -31,7 +31,6 @@ class ProfileLikedActivity : AppCompatActivity()  {
 
         viewBinding.loadingPb1.visibility = View.VISIBLE
 
-
         database = FirebaseFirestore.getInstance()
         //Logged in user
         val user = FirebaseAuth.getInstance().currentUser

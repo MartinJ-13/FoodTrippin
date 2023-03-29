@@ -132,7 +132,19 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/restaurantTagsTv"
+                        android:id="@+id/restaurantCuisineTagTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:background="@drawable/tag_in_pill"
+                        android:fontFamily="@font/nunito"
+                        android:gravity="center"
+
+                        android:text="Tag"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/restaurantDIneTagTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"

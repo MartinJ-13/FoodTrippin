@@ -14,8 +14,5 @@ class RestaurantPreviewViewHolder (private val viewBinding: ItemlayoutRestaurant
         this.viewBinding.profileLikedCuisinetypeTv.text = restaurant.cuisineType
         this.viewBinding.profileLikedDiningtypeTv.text = restaurant.diningType
         this.viewBinding.profileLikedRestaurantImgIv.setImageResource(restaurant.imageResId)
-
-
-
     }
 }
