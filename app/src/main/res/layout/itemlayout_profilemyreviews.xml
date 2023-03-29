@@ -114,7 +114,7 @@
                     android:maxWidth="250dp"
                     android:text="Review"
                     android:textColor="#404040"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
         </LinearLayout>
