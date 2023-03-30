@@ -214,16 +214,12 @@ class ReviewActivity : AppCompatActivity(){
                                 //retrieves the downloadUrl of the image
                             }.addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
-                                    if (imageURL1 == null) {
                                         imageURL1 = task.result
                                         Log.d(ContentValues.TAG, "imageURL1 is " + imageURL1)
                                         val reviewData = hashMapOf(
                                             "username" to username,
                                             "restaurant" to restaurantName,
-                                            "date" to SimpleDateFormat(
-                                                "MMMM dd, yyyy",
-                                                Locale.getDefault()
-                                            ).format(Date()),
+                                            "date" to SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault()).format(Date()),
                                             "rating" to viewBinding.ratingBar.rating,
                                             "review" to viewBinding.reviewTextTv.text.toString(),
                                             "userAvatar" to profilePic,
@@ -238,7 +234,6 @@ class ReviewActivity : AppCompatActivity(){
                                             .addOnFailureListener { e ->
                                                 Log.w(ContentValues.TAG, "Error adding review to Firestore", e)
                                             }
-                                    }
                                 }
                             }
                                 .addOnFailureListener { e ->
@@ -252,17 +247,14 @@ class ReviewActivity : AppCompatActivity(){
                         val reviewData = hashMapOf(
                             "username" to username,
                             "restaurant" to restaurantName,
-                            "date" to SimpleDateFormat(
-                                "MMMM dd, yyyy",
-                                Locale.getDefault()
-                            ).format(Date()),
+                            "date" to SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault()).format(Date()),
                             "rating" to viewBinding.ratingBar.rating,
                             "review" to viewBinding.reviewTextTv.text.toString(),
                             "userAvatar" to profilePic,
-                            "reviewPicID1" to null,
+                            "reviewPicID1" to "",
                         )
                         database.collection("reviews")
-                            .document(reviewID!!)
+                            .document()
                             .set(reviewData)
                             .addOnSuccessListener {
                                 Log.d(ContentValues.TAG, "Review added to Firestore")

@@ -3,6 +3,7 @@ package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -10,13 +11,13 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.*
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityProfilemyreviewsBinding
 import com.squareup.picasso.Picasso
 
 class ProfilemyreviewsActivity : AppCompatActivity()  {
     private lateinit var data: ArrayList<Review>
-    private lateinit var myAdapter: ReviewAdapter
+    private lateinit var reviewAdapter: ReviewAdapter
     private lateinit var viewBinding: ActivityProfilemyreviewsBinding
     private lateinit var recyclerView: RecyclerView
 
@@ -32,24 +33,24 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
         database = FirebaseFirestore.getInstance()
         //Logged in user
         val user = FirebaseAuth.getInstance().currentUser
-
         val getUser = database.collection("users").document(user!!.uid)
+        var username : String? = ""
+        var profilePic : String? = ""
 
         if (user != null){
             getUser.get().addOnSuccessListener { document ->
                 if(document != null) {
-                    val profilePic = document.getString("avatar")
-                    val username = document.getString("username")
+                    profilePic = document.getString("avatar")
+                    username = document.getString("username")
 
                     if(profilePic != null)
                         Picasso.get().load(profilePic).into(viewBinding.reviewUserIconIv)
                     viewBinding.loadingPb2.visibility = View.GONE
                     viewBinding.profileMyReviewsUsernameTv.text = username
-
                 }
             }
         }
-
+        RetrieveReviewsListener()
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding
         val drawerLayout = viewBinding.drawerLayout
@@ -98,18 +99,40 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
 
         //SIDEBAR CODE
 
-        this.data = ReviewDataHelper.generateData()
+        this.data = arrayListOf()
         this.recyclerView = viewBinding.profileMyReviewsRecyclerView
-        this.myAdapter = ReviewAdapter(data)
-        this.recyclerView.adapter = myAdapter
+        this.reviewAdapter = ReviewAdapter(data)
+        this.recyclerView.adapter = reviewAdapter
         this.recyclerView.layoutManager = LinearLayoutManager(this)
 
         viewBinding.profileLikedBtn.setOnClickListener(View.OnClickListener {
             val intent = Intent(applicationContext, ProfileLikedActivity::class.java)
+            intent.putExtra("username", username)
+            intent.putExtra("profilePic", profilePic)
             this.startActivity(intent)
             this.overridePendingTransition(0, 0);
         })
-
     }
 
+    private fun RetrieveReviewsListener() {
+        database = FirebaseFirestore.getInstance()
+        database.collection("reviews").addSnapshotListener(object : EventListener<QuerySnapshot> {
+            override fun onEvent(
+                value: QuerySnapshot?,
+                error: FirebaseFirestoreException?
+            ) {
+                if (error != null){
+                    Log.e("Error in database", error.message.toString())
+                    return
+                }
+
+                for (dc : DocumentChange in value?.documentChanges!!){
+                    if (dc.type == DocumentChange.Type.ADDED){
+                        data.add(dc.document.toObject(Review::class.java))
+                    }
+                }
+                reviewAdapter.notifyDataSetChanged()
+            }
+        })
+    }
 }

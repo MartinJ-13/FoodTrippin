@@ -49,7 +49,7 @@ class SignUpActivity2 : AppCompatActivity() {
                                             "uid" to user.uid,
                                             "username" to username,
                                             "email" to email,
-                                            "avatar" to " ",
+                                            "avatar" to "https://firebasestorage.googleapis.com/v0/b/food-trippin-prototype.appspot.com/o/images%2Favatars%2Favatar.png?alt=media&token=3c0f2323-6881-4ab2-8764-9a7b9eefb92f",
                                             "bio" to " ",
                                         )
                                         database.collection("users")

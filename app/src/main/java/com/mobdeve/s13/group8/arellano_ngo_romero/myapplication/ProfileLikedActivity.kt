@@ -34,23 +34,11 @@ class ProfileLikedActivity : AppCompatActivity()  {
         database = FirebaseFirestore.getInstance()
         //Logged in user
         val user = FirebaseAuth.getInstance().currentUser
+        val username = intent.getStringExtra("username").toString()
+        val profilePic = intent.getStringExtra("profilePic").toString()
 
-        val getUser = database.collection("users").document(user!!.uid)
-
-        if (user != null){
-            getUser.get().addOnSuccessListener { document ->
-                if(document != null) {
-                    val profilePic = document.getString("avatar")
-                    val username = document.getString("username")
-
-                    if(profilePic != null)
-                        Picasso.get().load(profilePic).into(viewBinding.reviewUserIconIv)
-                    viewBinding.loadingPb1.visibility = View.GONE
-                    viewBinding.profileMyReviewsUsernameTv.text = username
-                }
-            }
-        }
-
+        viewBinding.profileMyReviewsUsernameTv.text = username
+        Picasso.get().load(profilePic).into(viewBinding.reviewUserIconIv)
 
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding

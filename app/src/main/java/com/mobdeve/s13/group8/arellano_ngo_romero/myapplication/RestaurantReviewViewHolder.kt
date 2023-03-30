@@ -1,5 +1,6 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ItemlayoutRestaurantreviewsBinding
 import com.squareup.picasso.Picasso
@@ -13,6 +14,10 @@ class RestaurantReviewViewHolder (private val viewBinding: ItemlayoutRestaurantr
         this.viewBinding.reviewDatePostedTv.text = restaurantReview.date
         this.viewBinding.reviewReviewTv.text = restaurantReview.review
         this.viewBinding.reviewStarsTv.text = restaurantReview.rating.toString()
-        Picasso.get().load(restaurantReview.reviewPicID1).into(viewBinding.reviewReviewImage1Iv)
+        if(!restaurantReview.reviewPicID1.toString().isNullOrEmpty())
+            Picasso.get().load(restaurantReview.reviewPicID1).into(viewBinding.reviewReviewImage1Iv)
+        else {
+            this.viewBinding.reviewReviewImage1Iv.visibility = View.GONE
+        }
     }
 }
