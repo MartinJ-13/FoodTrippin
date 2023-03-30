@@ -22,6 +22,7 @@ import com.google.firebase.firestore.core.Query
 import com.google.firebase.firestore.ktx.toObject
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityProfilemyreviewsBinding
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityRestaurantBinding
+import com.squareup.picasso.Picasso
 import org.w3c.dom.Document
 
 class RestaurantActivity : AppCompatActivity()  {
@@ -42,13 +43,14 @@ class RestaurantActivity : AppCompatActivity()  {
         super.onCreate(savedInstanceState)
         val viewBinding: ActivityRestaurantBinding = ActivityRestaurantBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
-
+        database = FirebaseFirestore.getInstance()
 
         val restaurantName = intent.getStringExtra("restaurantName").toString()
         val restaurantAddress = intent.getStringExtra("restaurantAddress").toString()
         val restaurantCuisineType = intent.getStringExtra("restaurantCuisineType").toString()
         val restaurantDiningType = intent.getStringExtra("restaurantDiningType").toString()
         val restaurantRating = intent.getStringExtra("restaurantRating")
+        val getResto = database.collection("restaurants").whereEqualTo("name", restaurantName)
 
         viewBinding.restaurantNameTv.text = restaurantName
         viewBinding.restaurantAddressTv.text = restaurantAddress
@@ -61,6 +63,14 @@ class RestaurantActivity : AppCompatActivity()  {
         val drawerLayout = viewBinding.drawerLayout
         val navView = viewBinding.navView
 
+        getResto.get().addOnSuccessListener { querySnapshot ->
+            val documents = querySnapshot.documents
+            if(documents.isNotEmpty()) {
+                val firstDoc = documents[0]
+                val restoPic = firstDoc.getString("imageResId")
+                Picasso.get().load(restoPic).into(viewBinding.restaurantImgIv)
+            }
+        }
 
         // Set a click listener for the hamburger icon to open the sidebar
         viewBinding.sidebarNav.setOnClickListener {

@@ -3,8 +3,10 @@ package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.Menu
+import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.PopupWindow
@@ -13,36 +15,36 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.*
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityHomepageBinding
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.PopupRestaurantfilterBinding
 
 class HomePageActivity : AppCompatActivity() {
 
-    private lateinit var data: ArrayList<RestaurantPreviewModel>
-    private lateinit var myAdapter: RestaurantPreviewAdapter
+    private lateinit var restoData: ArrayList<RestaurantPreviewModel>
+    private lateinit var restoAdapter: RestaurantPreviewAdapter
     private lateinit var viewBinding: ActivityHomepageBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var popupBinding: PopupRestaurantfilterBinding
     private lateinit var popupWindow: PopupWindow
-
+    private lateinit var database : FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        data = RestaurantPreviewDataHelper.loadData()
+        restoData = arrayListOf()
         recyclerView = viewBinding.recyclerView
-        myAdapter = RestaurantPreviewAdapter(data)
-        recyclerView.adapter = myAdapter
+        restoAdapter = RestaurantPreviewAdapter(restoData)
+        recyclerView.adapter = restoAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
-
         //logged in user
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null){
             val uid = user.uid
         }
-
+        RetrieveReviewsListener()
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding
         val drawerLayout = viewBinding.drawerLayout
@@ -137,4 +139,31 @@ class HomePageActivity : AppCompatActivity() {
         val rootView = window.decorView.rootView
         popupWindow.showAtLocation(rootView, Gravity.CENTER, 0, 0)
     }
+
+    private fun RetrieveReviewsListener() {
+        viewBinding.loadingRestoPb.visibility = View.VISIBLE
+        database = FirebaseFirestore.getInstance()
+
+        database.collection("restaurants").addSnapshotListener(object :
+            EventListener<QuerySnapshot> {
+            override fun onEvent(
+                value: QuerySnapshot?,
+                error: FirebaseFirestoreException?
+            ) {
+                if (error != null){
+                    Log.e("Error in database", error.message.toString())
+                    return
+                }
+
+                for (dc : DocumentChange in value?.documentChanges!!){
+                    if (dc.type == DocumentChange.Type.ADDED){
+                        restoData.add(dc.document.toObject(RestaurantPreviewModel::class.java))
+                    }
+                }
+                restoAdapter.notifyDataSetChanged()
+                viewBinding.loadingRestoPb.visibility = View.INVISIBLE
+            }
+        })
+    }
+
 }
