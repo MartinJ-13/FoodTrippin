@@ -18,6 +18,7 @@ import androidx.core.content.FileProvider
 import androidx.core.view.GravityCompat
 import androidx.viewbinding.ViewBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityReviewBinding
@@ -224,6 +225,7 @@ class ReviewActivity : AppCompatActivity(){
                                             "review" to viewBinding.reviewTextTv.text.toString(),
                                             "userAvatar" to profilePic,
                                             "reviewPicID1" to imageURL1,
+                                            "timestamp" to FieldValue.serverTimestamp(),
                                         )
                                         database.collection("reviews")
                                             .document()

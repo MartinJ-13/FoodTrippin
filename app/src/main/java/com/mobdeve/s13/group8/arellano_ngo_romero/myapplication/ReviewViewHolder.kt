@@ -13,8 +13,11 @@ class ReviewViewHolder(private val viewBinding: ItemlayoutProfilemyreviewsBindin
         this.viewBinding.reviewReviewTv.text = review.review
         this.viewBinding.reviewDatePostedTv.text = review.date
         this.viewBinding.reviewRestoNameTv.text = review.restaurant
-        Picasso.get().load(review.imageId).into(viewBinding.reviewUserIconIv)
+
+        Picasso.get().load(review.userAvatar).into(viewBinding.reviewUserIconIv)
+
         this.viewBinding.reviewStarsRatingTv.text = review.rating.toString()
+
         if(!review.reviewPicID1.toString().isNullOrEmpty())
             Picasso.get().load(review.reviewPicID1).into(viewBinding.reviewReviewImage1Iv)
         else

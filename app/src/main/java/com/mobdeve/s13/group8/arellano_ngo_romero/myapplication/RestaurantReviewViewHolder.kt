@@ -9,7 +9,7 @@ class RestaurantReviewViewHolder (private val viewBinding: ItemlayoutRestaurantr
 
 
     fun bindData(restaurantReview: Review) {
-        Picasso.get().load(restaurantReview.imageId).into(viewBinding.reviewUserIconIv)
+        Picasso.get().load(restaurantReview.userAvatar).into(viewBinding.reviewUserIconIv)
         this.viewBinding.reviewByTv.text = "By: " + restaurantReview.username
         this.viewBinding.reviewDatePostedTv.text = restaurantReview.date
         this.viewBinding.reviewReviewTv.text = restaurantReview.review
