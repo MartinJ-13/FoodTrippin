@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <RelativeLayout
         android:id="@+id/headerLl"
@@ -42,7 +44,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/nunito_bold"
         android:text="Update Profile Picture"
-        android:textColor="#000000"
+        android:textColor="#3A8182"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,71 +107,89 @@
         android:id="@+id/editProf_UpdateBioTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/nunito_bold"
         android:text="Update Bio"
-        android:textColor="#000000"
+        android:textColor="#3A8182"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editProf_OpenCamBtn" />
 
-    <EditText
-        android:id="@+id/editProf_BioPt"
-        android:layout_width="323dp"
-        android:layout_height="125dp"
-        android:layout_marginTop="15dp"
-        android:backgroundTint="#00FFFFFF"
-        android:ems="10"
-        android:inputType="textMultiLine|textPersonName"
-        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editProf_UpdateBioTv" />
-
-    <Button
-        android:id="@+id/editProf_CancelBtn"
-        android:layout_width="115dp"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="@color/gray"
-        android:fontFamily="@font/nunito_bold"
-        android:gravity="center_horizontal"
-        android:paddingLeft="28dp"
-        android:paddingTop="8dp"
-        android:paddingRight="27dp"
-        android:paddingBottom="8dp"
-        android:text="Cancel"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        app:cornerRadius="30px"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editProf_BioPt" />
-
-    <Button
-        android:id="@+id/editProf_SaveBtn"
-        android:layout_width="115dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="40dp"
-        android:backgroundTint="#FF9C5C"
-        android:fontFamily="@font/nunito_bold"
-        android:gravity="center_horizontal"
-        android:paddingLeft="28dp"
-        android:paddingTop="8dp"
-        android:paddingRight="28dp"
-        android:paddingBottom="8dp"
-        android:text="Save"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        app:cornerRadius="30px"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/login_input_field"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editProf_BioPt" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editProf_UpdateBioTv">
+
+        <EditText
+            android:id="@+id/editProf_BioPt"
+            android:layout_width="300dp"
+            android:layout_height="125dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#00D3D3D3"
+            android:ems="10"
+            android:fontFamily="@font/nunito_semibold"
+            android:gravity="top"
+            android:hint="Enter your profile bio here. \n(Max 150 characters)"
+            android:inputType="text|textMultiLine"
+            android:maxLength="150"
+            android:textColor="#020202"
+            android:textColorHint="#434141"
+            android:textSize="14sp"
+            tools:context=".EditProfileActivity" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonLl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <Button
+            android:id="@+id/editProf_CancelBtn"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/gray"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="center_horizontal"
+            android:paddingTop="8dp"
+            android:text="Cancel"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:cornerRadius="30px" />
+
+        <Button
+            android:id="@+id/editProf_SaveBtn"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF9C5C"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="center_horizontal"
+            android:paddingTop="8dp"
+            android:text="Save"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:cornerRadius="30px" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

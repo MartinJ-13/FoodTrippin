@@ -63,10 +63,7 @@ class TakePhotoActivity : AppCompatActivity() {
         viewBinding = ActivityTakephotoBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
         //get uid from prev activity
-        val uid = intent.getStringExtra("uid").toString()
         val username = intent.getStringExtra("username").toString()
-        val email = intent.getStringExtra("email").toString()
-        val password = intent.getStringExtra("password").toString()
 
         //query uid from database
         database = FirebaseFirestore.getInstance()
@@ -126,25 +123,25 @@ class TakePhotoActivity : AppCompatActivity() {
                                         Log.d(TAG, "Error updating document ", exception)
                                     }
                             }
+                            Toast.makeText(this, "Profile Picture successfully updated/added!", Toast.LENGTH_SHORT).show()
+                            val intent1 = Intent(this, MainActivity::class.java)
+                            intent1.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent1)
+
                         }.addOnFailureListener{exception ->
                             Log.d(TAG, "Cannot find user ", exception)
                         }
-                    Toast.makeText(this, "Profile Picture successfully updated/added!", Toast.LENGTH_SHORT).show()
                 }
-
             }
 
-            //pass intents to next activity (if needed)
-//            val intent = Intent(this, SignUpActivity3::class.java)
-//            intent.putExtra("username", username)
-//            intent.putExtra("email", email)
-//            intent.putExtra("password", password)
-//            startActivity(intent)
         })
 
 
         viewBinding.skipBtn.setOnClickListener(View.OnClickListener {
-
+            val intent1 = Intent(this, MainActivity::class.java)
+            intent1.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent1)
+            finish()
         })
 
     }

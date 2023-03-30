@@ -22,6 +22,25 @@
             app:layout_constraintTop_toTopOf="parent"
             android:visibility="gone"/>
 
+        <Button
+            android:id="@+id/editProfBtn2"
+            android:layout_width="125dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#F37E35"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Edit PROFILE"
+            android:textSize="9dp"
+            app:cornerRadius="40dp"
+            app:icon="@drawable/baseline_edit_24"
+            app:iconGravity="textStart"
+            app:iconPadding="3dp"
+            app:iconSize="15dp"
+            app:iconTint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <LinearLayout
             android:id="@+id/samplinearLl"
             android:layout_width="match_parent"

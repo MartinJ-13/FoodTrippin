@@ -119,7 +119,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 app:cornerRadius="30px"
-                app:icon="@drawable/baseline_photo_library_24" />
+                app:icon="@drawable/baseline_save_24" />
 
             <Button
                 android:id="@+id/skipBtn"

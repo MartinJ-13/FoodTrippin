@@ -93,6 +93,11 @@
             android:exported="true"
             android:launchMode="singleTask" />
 
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="true"
+            android:launchMode="singleTask" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

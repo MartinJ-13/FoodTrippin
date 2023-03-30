@@ -109,7 +109,12 @@ class ProfileLikedActivity : AppCompatActivity()  {
             finish()
             this.overridePendingTransition(0, 0);
         })
-
+        viewBinding.editProfBtn2.setOnClickListener(View.OnClickListener {
+            val intent = Intent(applicationContext, EditProfileActivity::class.java)
+            intent.putExtra("username", username)
+            intent.putExtra("profilePic", profilePic)
+            this.startActivity(intent)
+        })
     }
 
 }

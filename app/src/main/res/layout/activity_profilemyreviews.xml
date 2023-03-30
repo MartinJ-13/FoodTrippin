@@ -23,7 +23,26 @@
             app:layout_constraintTop_toTopOf="parent"
             android:visibility="gone"/>
 
-    <LinearLayout
+        <Button
+            android:id="@+id/editProfBtn"
+            android:layout_width="125dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#F37E35"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Edit PROFILE"
+            android:textSize="9dp"
+            app:cornerRadius="40dp"
+            app:icon="@drawable/baseline_edit_24"
+            app:iconGravity="textStart"
+            app:iconPadding="3dp"
+            app:iconSize="15dp"
+            app:iconTint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -61,56 +80,56 @@
 
         <!--        <include layout="@layout/nav_header" />-->
 
-        <LinearLayout
-            android:id="@+id/profileBannerLl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#3A8182"
-            android:gravity="center|center_horizontal|center_vertical"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="10dp">
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/review_userIconIv"
-                android:layout_width="91dp"
-                android:layout_height="91dp"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                app:shapeAppearanceOverlay="@style/roundImageView_profile_profileBanner_userIcon"
-                app:srcCompat="@drawable/avatar" />
-
             <LinearLayout
-                android:id="@+id/profileBannerLl_usernameBio"
+                android:id="@+id/profileBannerLl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:background="#3A8182"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp">
 
-                <TextView
-                    android:id="@+id/profile_myReviews_usernameTv"
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/review_userIconIv"
+                    android:layout_width="91dp"
+                    android:layout_height="91dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    app:shapeAppearanceOverlay="@style/roundImageView_profile_profileBanner_userIcon"
+                    app:srcCompat="@drawable/avatar" />
+
+                <LinearLayout
+                    android:id="@+id/profileBannerLl_usernameBio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="Username"
-                    android:textColor="#FFFFFF"
-                    android:textSize="16dp"
-                    android:textStyle="bold" />
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/profile_myReviews_bioEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:height="20dp"
-                    android:background="#00FFFFFF"
-                    android:text="Bio"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14dp" />
+                    <TextView
+                        android:id="@+id/profile_myReviews_usernameTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Username"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/profile_myReviews_bioEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:height="20dp"
+                        android:background="#00FFFFFF"
+                        android:text="Bio"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
             </LinearLayout>
-
-        </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/profileReviewsLikedLl"

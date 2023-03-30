@@ -36,17 +36,25 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
         val getUser = database.collection("users").document(user!!.uid)
         var username : String? = ""
         var profilePic : String? = ""
+        var bio : String? = " "
 
         if (user != null){
             getUser.get().addOnSuccessListener { document ->
                 if(document != null) {
                     profilePic = document.getString("avatar")
                     username = document.getString("username")
+                    bio = document.getString("bio")
 
                     if(profilePic != null)
                         Picasso.get().load(profilePic).into(viewBinding.reviewUserIconIv)
                     viewBinding.loadingPb2.visibility = View.GONE
                     viewBinding.profileMyReviewsUsernameTv.text = username
+
+                    if(bio.isNullOrEmpty())
+                        viewBinding.profileMyReviewsBioEt.visibility = View.GONE
+                    else
+                        viewBinding.profileMyReviewsBioEt.text = bio
+
                 }
             }
         }
@@ -111,6 +119,13 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
             intent.putExtra("profilePic", profilePic)
             this.startActivity(intent)
             this.overridePendingTransition(0, 0);
+        })
+
+        viewBinding.editProfBtn.setOnClickListener(View.OnClickListener {
+            val intent = Intent(applicationContext, EditProfileActivity::class.java)
+            intent.putExtra("username", username)
+            intent.putExtra("profilePic", profilePic)
+            this.startActivity(intent)
         })
     }
 

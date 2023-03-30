@@ -102,7 +102,7 @@ class ReviewActivity : AppCompatActivity(){
             val navView = viewBinding.navView
             val restaurantName = intent.getStringExtra("restaurantName").toString()
 
-            viewBinding.restoNameTv.text = restaurantName
+            viewBinding.restoNameTv.text = restaurantName + "?"
 
             // Set a click listener for the hamburger icon to open the sidebar
             viewBinding.sidebarNav.setOnClickListener {
