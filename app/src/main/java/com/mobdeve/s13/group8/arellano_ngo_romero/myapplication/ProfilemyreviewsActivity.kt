@@ -128,6 +128,10 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
             this.startActivity(intent)
         })
     }
+    override fun onPause(){
+        super.onPause()
+        RetrieveReviewsListener()
+    }
 
     private fun RetrieveReviewsListener() {
         database = FirebaseFirestore.getInstance()

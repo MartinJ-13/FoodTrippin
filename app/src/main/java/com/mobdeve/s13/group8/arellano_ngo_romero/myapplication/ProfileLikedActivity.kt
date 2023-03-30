@@ -114,6 +114,7 @@ class ProfileLikedActivity : AppCompatActivity()  {
             intent.putExtra("username", username)
             intent.putExtra("profilePic", profilePic)
             this.startActivity(intent)
+            finish()
         })
     }
 
