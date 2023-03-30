@@ -12,10 +12,9 @@ class ReviewDataHelper {
                     "Jollibee",
                     "March 13, 2023",
                     3.0,
-                    R.drawable.img1,
+                    "",
                     "Some of the items are a bit boring, but most of them are varied enough. Overall a decent restaurant.",
-                    R.drawable.borger,
-                    R.drawable.borger
+                    "",
                 )
             )
 
@@ -25,10 +24,10 @@ class ReviewDataHelper {
                     "McDonalds",
                     "March 13, 2023",
                     3.5,
-                    R.drawable.img1,
+                    "R.drawable.img",
                     "Cheese is way too much. Shame since the patty is good.",
-                    R.drawable.borger,
-                    R.drawable.borger
+                    "",
+
                 )
             )
 

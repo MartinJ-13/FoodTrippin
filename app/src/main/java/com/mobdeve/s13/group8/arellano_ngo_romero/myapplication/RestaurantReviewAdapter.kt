@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ItemlayoutRestaurantreviewsBinding
 
-class RestaurantReviewAdapter (private val data: ArrayList<RestaurantReview>): RecyclerView.Adapter<RestaurantReviewViewHolder>() {
+class RestaurantReviewAdapter (private val data: ArrayList<Review>): RecyclerView.Adapter<RestaurantReviewViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantReviewViewHolder {
         val itemViewBinding: ItemlayoutRestaurantreviewsBinding = ItemlayoutRestaurantreviewsBinding.inflate(

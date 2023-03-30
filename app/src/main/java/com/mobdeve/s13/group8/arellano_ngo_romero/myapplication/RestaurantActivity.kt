@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.widget.Toast
@@ -16,16 +17,20 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.*
+import com.google.firebase.firestore.core.Query
+import com.google.firebase.firestore.ktx.toObject
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityProfilemyreviewsBinding
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityRestaurantBinding
+import org.w3c.dom.Document
 
 class RestaurantActivity : AppCompatActivity()  {
-    private lateinit var reviewData: ArrayList<RestaurantReview>
+    private lateinit var reviewData: ArrayList<Review>
     private lateinit var menuData: ArrayList<RestaurantMenu>
 
     private lateinit var reviewAdapter: RestaurantReviewAdapter
     private lateinit var menuAdapter: RestaurantMenuAdapter
-
+    private lateinit var database : FirebaseFirestore
     private lateinit var viewBinding: ActivityRestaurantBinding
 
     private lateinit var reviewRecyclerView: RecyclerView
@@ -111,7 +116,7 @@ class RestaurantActivity : AppCompatActivity()  {
 
         //SIDEBAR CODE
 
-        this.reviewData = RestaurantReviewDataHelper.loadData()
+        this.reviewData = arrayListOf()
         this.menuData = RestaurantMenuDataHelper.loadData()
 
         this.reviewAdapter = RestaurantReviewAdapter(reviewData)
@@ -128,6 +133,8 @@ class RestaurantActivity : AppCompatActivity()  {
 
         var likeFlag: Boolean
         likeFlag = false
+
+        RetrieveReviewsListener()
 
         viewBinding.restaurantLikeBtn.setOnClickListener(View.OnClickListener {
             likeFlag = if(!likeFlag) {
@@ -148,4 +155,27 @@ class RestaurantActivity : AppCompatActivity()  {
         })
     }
 
+    private fun RetrieveReviewsListener() {
+        database = FirebaseFirestore.getInstance()
+        database.collection("reviews").addSnapshotListener(object : EventListener<QuerySnapshot>{
+            override fun onEvent(
+                value: QuerySnapshot?,
+                error: FirebaseFirestoreException?
+            ) {
+                if (error != null){
+                    Log.e("Error in database", error.message.toString())
+                    return
+                }
+
+                for (dc : DocumentChange in value?.documentChanges!!){
+                    if (dc.type == DocumentChange.Type.ADDED){
+
+                        reviewData.add(dc.document.toObject(Review::class.java))
+
+                    }
+                }
+                reviewAdapter.notifyDataSetChanged()
+            }
+        })
+    }
 }

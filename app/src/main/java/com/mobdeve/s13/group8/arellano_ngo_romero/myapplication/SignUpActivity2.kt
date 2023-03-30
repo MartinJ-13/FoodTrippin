@@ -23,7 +23,6 @@ class SignUpActivity2 : AppCompatActivity() {
         setContentView(viewBinding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
-    //    storage = FirebaseStorage.getInstance()
         database = FirebaseFirestore.getInstance()
 
         val username =  intent.getStringExtra("username").toString()
@@ -50,7 +49,8 @@ class SignUpActivity2 : AppCompatActivity() {
                                             "uid" to user.uid,
                                             "username" to username,
                                             "email" to email,
-                                            "avatar" to " "
+                                            "avatar" to " ",
+                                            "bio" to " ",
                                         )
                                         database.collection("users")
                                             .document(user.uid)
@@ -104,58 +104,3 @@ class SignUpActivity2 : AppCompatActivity() {
         })
     }
 }
-
-//                        firebaseAuth.createUserWithEmailAndPassword(email, password)
-//                            .addOnCompleteListener(this) { task ->
-//                                if (task.isSuccessful) {
-//                                    // User registration successful
-//                                    val firebaseUser = firebaseAuth.currentUser
-////                        if (firebaseUser != null) {
-////                            // Get user ID
-////                            val userId = firebaseUser.uid
-////
-////
-////                            //CREATES THE URI OF THE BITMAP
-////
-////                            val uri: Uri?
-////                            val bytes = ByteArrayOutputStream()
-////                            imageBitmap?.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
-////                            val storageDir = this.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-////                            val imagePath = username + "_avatar.jpg"
-////                            val imageFile = File(storageDir, imagePath)
-////                            imageFile.createNewFile()
-////                            val fos = FileOutputStream(imageFile)
-////                            fos.write(bytes.toByteArray())
-////                            fos.flush()
-////                            fos.close()
-////                            uri = FileProvider.getUriForFile(this,"${applicationContext.packageName}.provider", imageFile)
-////
-////                            //UPLOAD IMAGE TO FIREBASE STORAGE
-////                            val storageRef = FirebaseStorage.getInstance().getReference("images")
-////                            val imageRef = storageRef.child(imagePath)
-////                            val uploadTask = imageRef.putFile(uri)
-////
-////
-////                            storage.getReference("images").child(System.currentTimeMillis().toString())
-////                                .putFile(uri)
-////                                .addOnSuccessListener { task ->
-////
-////                                }
-////                            val user = User(username, email, uri.toString())
-////
-////                            dbCourses.add(user).addOnSuccessListener { documentReference ->
-////                                Toast.makeText(this, "Successfully added User Info", Toast.LENGTH_SHORT).show()
-////                            }
-////                                .addOnFailureListener{ e ->
-////                                    Toast.makeText(this, "Failed to add user", Toast.LENGTH_SHORT).show()
-////                                }
-////                            //END OF ADDING DATA TO FIRESTORE
-////                        }
-//                                } else {
-//                                    // User registration failed
-//                                    Toast.makeText(this, "Authentication failed: " + task.exception?.message, Toast.LENGTH_SHORT).show()
-//                                }
-//                            }
-////            finish()
-////            Toast.makeText(this, "Account successfully created!", Toast.LENGTH_SHORT).show()
-//                    })
