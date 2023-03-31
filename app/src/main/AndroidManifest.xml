@@ -15,9 +15,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="Food Trippin Prototype"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FoodTrippinPrototype"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
-
 
         <provider
             android:authorities="${applicationId}.provider"
