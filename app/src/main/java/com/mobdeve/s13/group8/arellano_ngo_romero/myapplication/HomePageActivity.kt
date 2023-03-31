@@ -1,27 +1,22 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
-import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.PopupWindow
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.*
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityHomepageBinding
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.PopupRestaurantfilterBinding
+import android.widget.SearchView.OnQueryTextListener
 
 class HomePageActivity : AppCompatActivity() {
 
@@ -50,12 +45,14 @@ class HomePageActivity : AppCompatActivity() {
             val uid = user.uid
         }
 
-        retrieveRestoListener()
+        RetrieveReviewsListener()
 
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding
         val drawerLayout = viewBinding.drawerLayout
         val navView = viewBinding.navView
+
+
 
         // Set a click listener for the hamburger icon to open the sidebar
         viewBinding.sidebarNav.setOnClickListener {
@@ -101,8 +98,8 @@ class HomePageActivity : AppCompatActivity() {
     private fun showFilterPopup() {
         popupBinding = PopupRestaurantfilterBinding.inflate(layoutInflater)
 
-        val cuisineOptions = arrayOf("--Choose a Cuisine--","American", "Japanese", "Chinese", "Mexican", "Korean")
-        val diningOptions = arrayOf("--Choose a Dining Option--", "Fine Dining", "Casual Dining", "Fast Food", "Buffet", "Food Court")
+        val cuisineOptions = arrayOf("--Choose a Cuisine--","American", "Japanese", "Chinese", "Mexican", "Korean", "Filipino")
+        val diningOptions = arrayOf("--Choose a Dining Option--", "Fine Dining", "Casual", "Fast Food", "Buffet", "Food Court", "Cafe")
         val options = arrayOf(cuisineOptions, diningOptions)
         val spinnerAdapters = mutableListOf<SpinnerAdapter>()
 
@@ -113,8 +110,13 @@ class HomePageActivity : AppCompatActivity() {
         popupBinding.btnApply.setOnClickListener{
             val cuisineType = cuisineOptions[popupBinding.spCuisineType.selectedItemPosition]
             val diningType = diningOptions[popupBinding.spDiningType.selectedItemPosition]
-            val minRating = popupBinding.rbFilter.rating.toDouble() ?: 0.0 // Set default value to 0.0 if input is invalid
-            getFilteredRestaurants(cuisineType, diningType, minRating) { filteredRestaurants ->
+//            val minRating = popupBinding.rbFilter.rating.toDouble() ?: 0.0 // Set default value to 0.0 if input is invalid
+//            getFilteredRestaurants(cuisineType, diningType, minRating) { filteredRestaurants ->
+//                restoData.clear()
+//                restoData.addAll(filteredRestaurants)
+//                restoAdapter.notifyDataSetChanged()
+//            }
+            getFilteredRestaurants(cuisineType, diningType) { filteredRestaurants ->
                 restoData.clear()
                 restoData.addAll(filteredRestaurants)
                 restoAdapter.notifyDataSetChanged()
@@ -150,22 +152,23 @@ class HomePageActivity : AppCompatActivity() {
         popupWindow.showAtLocation(rootView, Gravity.CENTER, 0, 0)
     }
 
-
-
     private fun getFilteredRestaurants(
         cuisineType: String,
         diningType: String,
-        minRating: Double? = null,
         callback: (List<RestaurantPreviewModel>) -> Unit
     ) {
         val db = FirebaseFirestore.getInstance()
         val collectionRef = db.collection("restaurants")
-        var query = collectionRef
-            .whereEqualTo("cuisineType", cuisineType)
-            .whereEqualTo("diningType", diningType)
-        minRating?.let {
-            query = query.whereGreaterThanOrEqualTo("rating", it)
+        var query: Query = collectionRef
+
+        if (cuisineType != "--Choose a Cuisine--") {
+            query = query.whereEqualTo("cuisineType", cuisineType)
         }
+
+        if (diningType != "--Choose a Dining Option--") {
+            query = query.whereEqualTo("diningType", diningType)
+        }
+
         query.get()
             .addOnSuccessListener { documents ->
                 val restaurants = mutableListOf<RestaurantPreviewModel>()
@@ -181,7 +184,9 @@ class HomePageActivity : AppCompatActivity() {
     }
 
 
-    private fun retrieveRestoListener() {
+
+
+    private fun RetrieveReviewsListener() {
         viewBinding.loadingRestoPb.visibility = View.VISIBLE
         database = FirebaseFirestore.getInstance()
 
