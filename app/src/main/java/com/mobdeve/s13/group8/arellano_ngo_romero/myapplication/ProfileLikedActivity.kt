@@ -33,7 +33,6 @@ class ProfileLikedActivity : AppCompatActivity()  {
 
         database = FirebaseFirestore.getInstance()
         //Logged in user
-        val user = FirebaseAuth.getInstance().currentUser
         val username = intent.getStringExtra("username").toString()
         val profilePic = intent.getStringExtra("profilePic").toString()
 

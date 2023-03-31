@@ -38,26 +38,24 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
         var profilePic : String? = ""
         var bio : String? = " "
 
-        if (user != null){
-            getUser.get().addOnSuccessListener { document ->
-                if(document != null) {
-                    profilePic = document.getString("avatar")
-                    username = document.getString("username")
-                    bio = document.getString("bio")
+        getUser.get().addOnSuccessListener { document ->
+            if(document != null) {
+                profilePic = document.getString("avatar")
+                username = document.getString("username")
+                bio = document.getString("bio")
 
-                    retrieveReviewsListener(username)
+                retrieveReviewsListener(username)
 
-                    if(profilePic != null)
-                        Picasso.get().load(profilePic).into(viewBinding.reviewUserIconIv)
-                    viewBinding.loadingPb2.visibility = View.GONE
-                    viewBinding.profileMyReviewsUsernameTv.text = username
+                if(profilePic != null)
+                    Picasso.get().load(profilePic).into(viewBinding.reviewUserIconIv)
+                viewBinding.loadingPb2.visibility = View.GONE
+                viewBinding.profileMyReviewsUsernameTv.text = username
 
-                    if(bio.isNullOrEmpty())
-                        viewBinding.profileMyReviewsBioEt.visibility = View.GONE
-                    else
-                        viewBinding.profileMyReviewsBioEt.text = bio
+                if(bio.isNullOrEmpty())
+                    viewBinding.profileMyReviewsBioEt.visibility = View.GONE
+                else
+                    viewBinding.profileMyReviewsBioEt.text = bio
 
-                }
             }
         }
 

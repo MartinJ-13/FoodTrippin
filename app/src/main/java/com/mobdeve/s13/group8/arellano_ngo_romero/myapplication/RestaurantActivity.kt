@@ -1,5 +1,7 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
+import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.PorterDuff
@@ -38,7 +40,7 @@ class RestaurantActivity : AppCompatActivity()  {
     private lateinit var menuRecyclerView: RecyclerView
 
     private val helper : SnapHelper = LinearSnapHelper()
-
+    private var likeFlag : Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val viewBinding: ActivityRestaurantBinding = ActivityRestaurantBinding.inflate(layoutInflater)
@@ -58,10 +60,23 @@ class RestaurantActivity : AppCompatActivity()  {
         viewBinding.restaurantDIneTagTv.text = restaurantDiningType
         viewBinding.restaurantRatingBar.rating = restaurantRating!!.toFloat()
 
+        val user = FirebaseAuth.getInstance().currentUser
+        val getUser = database.collection("users").document(user!!.uid)
+        var username : String? = ""
+        if (user != null){
+            getUser.get().addOnSuccessListener { document ->
+                if(document != null) {
+                    username = document.getString("username")
+                    retrieveLikeStatusListener(username, restaurantName, viewBinding)
+                }
+            }
+        }
+
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding
         val drawerLayout = viewBinding.drawerLayout
         val navView = viewBinding.navView
+
 
         getResto.get().addOnSuccessListener { querySnapshot ->
             val documents = querySnapshot.documents
@@ -141,19 +156,18 @@ class RestaurantActivity : AppCompatActivity()  {
         this.reviewRecyclerView.layoutManager = LinearLayoutManager(this)
         this.menuRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        var likeFlag: Boolean
-        likeFlag = false
-
         retrieveReviewsListener(restaurantName, viewBinding)
 
         viewBinding.restaurantLikeBtn.setOnClickListener(View.OnClickListener {
-            likeFlag = if(!likeFlag) {
+            if(!likeFlag) {
                 viewBinding.restaurantLikeBtn.setImageResource(R.drawable.heart_on)
-                viewBinding.restaurantLikeBtn.setColorFilter(0xfa2a55, PorterDuff.Mode.SRC_ATOP);
-                true
+                viewBinding.restaurantLikeBtn.setColorFilter(0xfa2a55, PorterDuff.Mode.SRC_ATOP)
+                likeFlag = true
+                likeRestaurant(restaurantName, username)
             } else {
                 viewBinding.restaurantLikeBtn.setImageResource(R.drawable.heart_off)
-                false
+                likeFlag = false
+                unlikeRestaurant(restaurantName, username)
             }
         })
 
@@ -191,4 +205,57 @@ class RestaurantActivity : AppCompatActivity()  {
             }
         })
     }
+
+    private fun retrieveLikeStatusListener(username : String?, restaurantName: String, binding: ActivityRestaurantBinding){
+        database = FirebaseFirestore.getInstance()
+        val getLikeStatus = database.collection("likes").whereEqualTo("restaurantName", restaurantName).whereEqualTo("username", username)
+       getLikeStatus.get().addOnSuccessListener { querySnapshot ->
+           val documents = querySnapshot.documents
+
+           if(documents.isNotEmpty()) {
+               binding.restaurantLikeBtn.setImageResource(R.drawable.heart_on)
+               binding.restaurantLikeBtn.setColorFilter(0xfa2a55, PorterDuff.Mode.SRC_ATOP);
+               likeFlag = true
+           }
+           else {
+               binding.restaurantLikeBtn.setImageResource(R.drawable.heart_off)
+               likeFlag = false
+           }
+
+       }
+    }
+
+    private fun likeRestaurant(restaurantName: String, username: String?){
+        database = FirebaseFirestore.getInstance()
+        val likeData = hashMapOf(
+            "restaurantName" to restaurantName,
+            "username" to username,
+        )
+        database.collection("likes")
+            .document()
+            .set(likeData)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Liked post!", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Like failed", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun unlikeRestaurant(restaurantName: String, username: String?){
+        database = FirebaseFirestore.getInstance()
+        val getResto = database.collection("likes").whereEqualTo("restaurantName", restaurantName).whereEqualTo("username", username)
+        getResto.get().addOnSuccessListener { querySnapshot ->
+        for (document in querySnapshot.documents) {
+            document.reference.delete().addOnSuccessListener {
+                Toast.makeText(this, "Unliked post!", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener {
+                Toast.makeText(this, "Unlike failed!", Toast.LENGTH_SHORT).show()
+            }
+        }
+        }.addOnFailureListener { e ->
+            Log.w(TAG, "Error finding the post to unlike", e)
+        }
+    }
+
 }
