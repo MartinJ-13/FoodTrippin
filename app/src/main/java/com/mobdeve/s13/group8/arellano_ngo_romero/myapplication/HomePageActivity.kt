@@ -50,8 +50,7 @@ class HomePageActivity : AppCompatActivity() {
             val uid = user.uid
         }
 
-        RetrieveReviewsListener()
-
+        retrieveRestoListener()
 
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding
@@ -182,7 +181,7 @@ class HomePageActivity : AppCompatActivity() {
     }
 
 
-    private fun RetrieveReviewsListener() {
+    private fun retrieveRestoListener() {
         viewBinding.loadingRestoPb.visibility = View.VISIBLE
         database = FirebaseFirestore.getInstance()
 
