@@ -3,6 +3,7 @@ package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +11,7 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.*
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityProfilelikedBinding
 import com.squareup.picasso.Picasso
 
@@ -98,7 +99,7 @@ class ProfileLikedActivity : AppCompatActivity()  {
 
         //SIDEBAR CODE
 
-        this.data = RestaurantPreviewDataHelper.loadData()
+        this.data = arrayListOf()
         this.recyclerView = viewBinding.profileLikedRecyclerView
         this.myAdapter = RestaurantPreviewAdapter(data)
         this.recyclerView.adapter = myAdapter
@@ -115,6 +116,31 @@ class ProfileLikedActivity : AppCompatActivity()  {
             this.startActivity(intent)
             finish()
         })
+    }
+
+    private fun retrieveLikesListener(username : String?) {
+        database = FirebaseFirestore.getInstance()
+        database.collection("reviews").whereEqualTo("username", username).addSnapshotListener(object :
+            EventListener<QuerySnapshot> {
+            override fun onEvent(
+                value: QuerySnapshot?,
+                error: FirebaseFirestoreException?
+            ) {
+                if (error != null){
+                    Log.e("Error in database", error.message.toString())
+                    return
+                }
+
+                for (dc : DocumentChange in value?.documentChanges!!){
+                    if (dc.type == DocumentChange.Type.ADDED){
+
+                        data.add(dc.document.toObject(RestaurantPreviewModel::class.java))
+                    }
+                }
+               myAdapter.notifyDataSetChanged()
+            }
+            })
+
     }
 
 }

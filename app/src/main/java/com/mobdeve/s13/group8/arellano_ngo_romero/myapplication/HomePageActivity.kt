@@ -44,7 +44,7 @@ class HomePageActivity : AppCompatActivity() {
         if (user != null){
             val uid = user.uid
         }
-        RetrieveReviewsListener()
+        retrieveRestaurantsListener()
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding
         val drawerLayout = viewBinding.drawerLayout
@@ -91,7 +91,6 @@ class HomePageActivity : AppCompatActivity() {
             showFilterPopup()
         }
     }
-
 
     private fun showFilterPopup() {
         popupBinding = PopupRestaurantfilterBinding.inflate(layoutInflater)
@@ -140,7 +139,7 @@ class HomePageActivity : AppCompatActivity() {
         popupWindow.showAtLocation(rootView, Gravity.CENTER, 0, 0)
     }
 
-    private fun RetrieveReviewsListener() {
+    private fun retrieveRestaurantsListener() {
         viewBinding.loadingRestoPb.visibility = View.VISIBLE
         database = FirebaseFirestore.getInstance()
 
