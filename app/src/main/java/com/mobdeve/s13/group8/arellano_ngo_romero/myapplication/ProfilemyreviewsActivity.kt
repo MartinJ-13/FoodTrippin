@@ -44,7 +44,7 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
                 username = document.getString("username")
                 bio = document.getString("bio")
 
-                retrieveReviewsListener(username)
+                retrieveReviewsListener(username, viewBinding)
 
                 if(profilePic != null)
                     Picasso.get().load(profilePic).into(viewBinding.reviewUserIconIv)
@@ -117,6 +117,7 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
             val intent = Intent(applicationContext, ProfileLikedActivity::class.java)
             intent.putExtra("username", username)
             intent.putExtra("profilePic", profilePic)
+            intent.putExtra("bio", bio)
             this.startActivity(intent)
             this.overridePendingTransition(0, 0);
         })
@@ -129,7 +130,7 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
         })
     }
 
-    private fun retrieveReviewsListener(username : String?) {
+    private fun retrieveReviewsListener(username : String?, binding : ActivityProfilemyreviewsBinding) {
         database = FirebaseFirestore.getInstance()
         database.collection("reviews").whereEqualTo("username", username).addSnapshotListener(object : EventListener<QuerySnapshot> {
             override fun onEvent(
@@ -149,5 +150,10 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
                 reviewAdapter.notifyDataSetChanged()
             }
         })
+        if(data.size == 0){
+            binding.noReviewsLl.visibility = View.VISIBLE
+        }else{
+            binding.noReviewsLl.visibility = View.GONE
+        }
     }
 }

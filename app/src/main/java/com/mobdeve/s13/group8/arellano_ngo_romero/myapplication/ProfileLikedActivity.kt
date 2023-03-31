@@ -37,10 +37,14 @@ class ProfileLikedActivity : AppCompatActivity()  {
         //Logged in user
         val username = intent.getStringExtra("username").toString()
         val profilePic = intent.getStringExtra("profilePic").toString()
+        val bio = intent.getStringExtra("bio").toString()
 
         viewBinding.profileMyReviewsUsernameTv.text = username
         Picasso.get().load(profilePic).into(viewBinding.reviewUserIconIv)
-        retrieveLikesListener(username)
+        viewBinding.profileMyReviewsBioEt.text = bio
+
+        retrieveLikesListener(username, viewBinding)
+        viewBinding.loadingPb1.visibility = View.GONE
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding
         val drawerLayout = viewBinding.drawerLayout
@@ -119,7 +123,7 @@ class ProfileLikedActivity : AppCompatActivity()  {
         })
     }
 
-    private fun retrieveLikesListener(username : String?) {
+    private fun retrieveLikesListener(username : String?, binding : ActivityProfilelikedBinding) {
         database = FirebaseFirestore.getInstance()
         val likesQuery = database.collection("likes").whereEqualTo("username", username)
 
@@ -128,28 +132,40 @@ class ProfileLikedActivity : AppCompatActivity()  {
                 val restaurantNames = likesTask.result?.documents?.map {
                     it.getString("restaurantName")
                 }.orEmpty()
+                if(restaurantNames.isNotEmpty()) {
+                    val restoQuery =
+                        database.collectionGroup("restaurants").whereIn("name", restaurantNames)
 
-                val restoQuery = database.collectionGroup("restaurants").whereIn("name", restaurantNames)
-
-                restoQuery.get().addOnSuccessListener { querySnapshot ->
-                    for (document in querySnapshot){
-                        val data = document.data
-                        val name = data["name"] as String
-                        val cuisineType = data["cuisineType"] as String
-                        val diningType = data["diningType"] as String
-                        val imageResId = data["imageResId"] as String
-                        val location = data["location"] as String
-                        val rating = data["rating"] as Double
-                        val restaurant = RestaurantPreviewModel(name, rating, location, diningType, cuisineType, imageResId)
-                        restoData.add(restaurant)
+                    restoQuery.get().addOnSuccessListener { querySnapshot ->
+                        for (document in querySnapshot) {
+                            val data = document.data
+                            val name = data["name"] as String
+                            val cuisineType = data["cuisineType"] as String
+                            val diningType = data["diningType"] as String
+                            val imageResId = data["imageResId"] as String
+                            val location = data["location"] as String
+                            val rating = data["rating"] as Double
+                            val restaurant = RestaurantPreviewModel(
+                                name,
+                                rating,
+                                location,
+                                diningType,
+                                cuisineType,
+                                imageResId
+                            )
+                            restoData.add(restaurant)
+                        }
+                        Log.e(TAG, "Retrieved Restos")
+                        myAdapter.notifyDataSetChanged()
                     }
-                    Log.e(TAG, "Retrieved Restos")
-                    myAdapter.notifyDataSetChanged()
+                        .addOnFailureListener { exception ->
+                            Log.e(TAG, "Error getting restaurants", exception)
+                        }
+                    }
+                else {
+                    Log.e(TAG, "No likes", likesTask.exception)
+                    binding.noLikesLl.visibility = View.VISIBLE
                 }
-                    .addOnFailureListener{
-                            exception ->
-                        Log.e(TAG, "Error getting restaurants", exception)
-                    }
                 }
             else {
                 Log.e(TAG, "Error getting likes", likesTask.exception)
