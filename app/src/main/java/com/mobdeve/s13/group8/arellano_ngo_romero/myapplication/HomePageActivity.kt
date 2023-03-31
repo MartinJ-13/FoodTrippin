@@ -15,6 +15,10 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.*
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityHomepageBinding
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.PopupRestaurantfilterBinding
@@ -39,12 +43,18 @@ class HomePageActivity : AppCompatActivity() {
         restoAdapter = RestaurantPreviewAdapter(restoData)
         recyclerView.adapter = restoAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+
         //logged in user
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null){
             val uid = user.uid
         }
+<<<<<<< Updated upstream
         retrieveRestaurantsListener()
+=======
+        RetrieveReviewsListener()
+
+>>>>>>> Stashed changes
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding
         val drawerLayout = viewBinding.drawerLayout
@@ -83,7 +93,6 @@ class HomePageActivity : AppCompatActivity() {
             }
         }
         navView.itemIconTintList = null
-
         //SIDEBAR CODE
 
         // Show filter popup on filter button click
@@ -98,19 +107,24 @@ class HomePageActivity : AppCompatActivity() {
         val cuisineOptions = arrayOf("--Choose a Cuisine--","American", "Japanese", "Chinese", "Mexican", "Korean")
         val diningOptions = arrayOf("--Choose a Dining Option--", "Fine Dining", "Casual Dining", "Fast Food", "Buffet", "Food Court")
         val options = arrayOf(cuisineOptions, diningOptions)
-
         val spinnerAdapters = mutableListOf<SpinnerAdapter>()
-
-
 
         for (option in options) {
             spinnerAdapters.add(SpinnerAdapter(this, option))
         }
 
         popupBinding.btnApply.setOnClickListener{
-            // TODO: Implement filtering logic
+            val cuisineType = cuisineOptions[popupBinding.spCuisineType.selectedItemPosition]
+            val diningType = diningOptions[popupBinding.spDiningType.selectedItemPosition]
+            val minRating = popupBinding.rbFilter.rating.toDouble() ?: 0.0 // Set default value to 0.0 if input is invalid
+            getFilteredRestaurants(cuisineType, diningType, minRating) { filteredRestaurants ->
+                restoData.clear()
+                restoData.addAll(filteredRestaurants)
+                restoAdapter.notifyDataSetChanged()
+            }
             popupWindow.dismiss()
         }
+
 
         for (i in spinnerAdapters.indices) {
             val adapter = spinnerAdapters[i]
@@ -139,7 +153,40 @@ class HomePageActivity : AppCompatActivity() {
         popupWindow.showAtLocation(rootView, Gravity.CENTER, 0, 0)
     }
 
+<<<<<<< Updated upstream
     private fun retrieveRestaurantsListener() {
+=======
+    private fun getFilteredRestaurants(
+        cuisineType: String,
+        diningType: String,
+        minRating: Double? = null,
+        callback: (List<RestaurantPreviewModel>) -> Unit
+    ) {
+        val db = FirebaseFirestore.getInstance()
+        val collectionRef = db.collection("restaurants")
+        var query = collectionRef
+            .whereEqualTo("cuisineType", cuisineType)
+            .whereEqualTo("diningType", diningType)
+        minRating?.let {
+            query = query.whereGreaterThanOrEqualTo("rating", it)
+        }
+        query.get()
+            .addOnSuccessListener { documents ->
+                val restaurants = mutableListOf<RestaurantPreviewModel>()
+                for (document in documents) {
+                    val restaurant = document.toObject(RestaurantPreviewModel::class.java)
+                    restaurants.add(restaurant)
+                }
+                callback(restaurants)
+            }
+            .addOnFailureListener { exception ->
+                // Handle error
+            }
+    }
+
+
+    private fun RetrieveReviewsListener() {
+>>>>>>> Stashed changes
         viewBinding.loadingRestoPb.visibility = View.VISIBLE
         database = FirebaseFirestore.getInstance()
 
