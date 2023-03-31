@@ -45,6 +45,8 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
                     username = document.getString("username")
                     bio = document.getString("bio")
 
+                    retrieveReviewsListener(username)
+
                     if(profilePic != null)
                         Picasso.get().load(profilePic).into(viewBinding.reviewUserIconIv)
                     viewBinding.loadingPb2.visibility = View.GONE
@@ -58,7 +60,7 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
                 }
             }
         }
-        RetrieveReviewsListener()
+
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding
         val drawerLayout = viewBinding.drawerLayout
@@ -128,14 +130,10 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
             this.startActivity(intent)
         })
     }
-    override fun onPause(){
-        super.onPause()
-        RetrieveReviewsListener()
-    }
 
-    private fun RetrieveReviewsListener() {
+    private fun retrieveReviewsListener(username : String?) {
         database = FirebaseFirestore.getInstance()
-        database.collection("reviews").addSnapshotListener(object : EventListener<QuerySnapshot> {
+        database.collection("reviews").whereEqualTo("username", username).addSnapshotListener(object : EventListener<QuerySnapshot> {
             override fun onEvent(
                 value: QuerySnapshot?,
                 error: FirebaseFirestoreException?
