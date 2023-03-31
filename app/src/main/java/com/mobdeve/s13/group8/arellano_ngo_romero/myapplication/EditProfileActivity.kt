@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
-import androidx.core.view.GravityCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -170,46 +169,6 @@ class EditProfileActivity : AppCompatActivity() {
         viewBinding.editProfCancelBtn.setOnClickListener(View.OnClickListener {
             finish()
         })
-
-        //SIDEBAR CODE
-        // Get the DrawerLayout and NavigationView using view binding
-        val drawerLayout = viewBinding.drawerLayout
-        val navView = viewBinding.navView
-
-        // Set a click listener for the hamburger icon to open the sidebar
-        viewBinding.sidebarNav.setOnClickListener {
-            drawerLayout.openDrawer(GravityCompat.START)
-        }
-
-        // Set a navigation item selected listener to handle navigation menu item clicks
-        navView.setNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.menu_home -> {
-                    drawerLayout.closeDrawer(GravityCompat.START) // close the drawer layout
-                    true
-                }
-                R.id.menu_profile -> {
-                    val intent = Intent(this, ProfilemyreviewsActivity::class.java)
-                    startActivity(intent)
-                    drawerLayout.closeDrawer(GravityCompat.START) // close the drawer layout
-
-                    true
-                }
-                R.id.menu_logout -> {
-                    FirebaseAuth.getInstance().signOut()
-                    val intent = Intent(this, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(intent)
-                    finish()
-
-                    drawerLayout.closeDrawer(GravityCompat.START) // close the drawer layout
-                    true
-                }
-                else -> false
-            }
-        }
-        navView.itemIconTintList = null
-        //SIDEBAR CODE
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
