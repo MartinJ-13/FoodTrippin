@@ -123,15 +123,17 @@ class TakePhotoActivity : AppCompatActivity() {
                                         Log.d(TAG, "Error updating document ", exception)
                                     }
                             }
-                            Toast.makeText(this, "Profile Picture successfully updated/added!", Toast.LENGTH_SHORT).show()
-                            val intent1 = Intent(this, MainActivity::class.java)
-                            intent1.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                            startActivity(intent1)
+
+
 
                         }.addOnFailureListener{exception ->
                             Log.d(TAG, "Cannot find user ", exception)
                         }
                 }
+                Toast.makeText(this, "Profile Picture successfully updated/added! You may now login.", Toast.LENGTH_SHORT).show()
+                val intent1 = Intent(this, MainActivity::class.java)
+                intent1.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent1)
             }
 
         })
