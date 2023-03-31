@@ -152,6 +152,7 @@ class HomePageActivity : AppCompatActivity() {
     }
 
 
+
     private fun getFilteredRestaurants(
         cuisineType: String,
         diningType: String,
@@ -166,13 +167,6 @@ class HomePageActivity : AppCompatActivity() {
         minRating?.let {
             query = query.whereGreaterThanOrEqualTo("rating", it)
         }
-
-        if (diningType != null){
-            query = collectionRef
-                .whereEqualTo("cuisineType", cuisineType)
-                .whereEqualTo("diningType", diningType)
-        }
-
         query.get()
             .addOnSuccessListener { documents ->
                 val restaurants = mutableListOf<RestaurantPreviewModel>()
