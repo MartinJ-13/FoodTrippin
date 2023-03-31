@@ -1,5 +1,6 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -17,7 +18,7 @@ import com.squareup.picasso.Picasso
 
 class ProfileLikedActivity : AppCompatActivity()  {
 
-    private lateinit var data: ArrayList<RestaurantPreviewModel>
+    private lateinit var restoData: ArrayList<RestaurantPreviewModel>
     private lateinit var myAdapter: RestaurantPreviewAdapter
     private lateinit var viewBinding: ActivityProfilelikedBinding
     private lateinit var recyclerView: RecyclerView
@@ -39,7 +40,7 @@ class ProfileLikedActivity : AppCompatActivity()  {
 
         viewBinding.profileMyReviewsUsernameTv.text = username
         Picasso.get().load(profilePic).into(viewBinding.reviewUserIconIv)
-
+        retrieveLikesListener(username)
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding
         val drawerLayout = viewBinding.drawerLayout
@@ -99,9 +100,9 @@ class ProfileLikedActivity : AppCompatActivity()  {
 
         //SIDEBAR CODE
 
-        this.data = arrayListOf()
+        this.restoData = arrayListOf()
         this.recyclerView = viewBinding.profileLikedRecyclerView
-        this.myAdapter = RestaurantPreviewAdapter(data)
+        this.myAdapter = RestaurantPreviewAdapter(restoData)
         this.recyclerView.adapter = myAdapter
         this.recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -120,27 +121,39 @@ class ProfileLikedActivity : AppCompatActivity()  {
 
     private fun retrieveLikesListener(username : String?) {
         database = FirebaseFirestore.getInstance()
-        database.collection("reviews").whereEqualTo("username", username).addSnapshotListener(object :
-            EventListener<QuerySnapshot> {
-            override fun onEvent(
-                value: QuerySnapshot?,
-                error: FirebaseFirestoreException?
-            ) {
-                if (error != null){
-                    Log.e("Error in database", error.message.toString())
-                    return
+        val likesQuery = database.collection("likes").whereEqualTo("username", username)
+
+        likesQuery.get().addOnCompleteListener { likesTask ->
+            if (likesTask.isSuccessful) {
+                val restaurantNames = likesTask.result?.documents?.map {
+                    it.getString("restaurantName")
+                }.orEmpty()
+
+                val restoQuery = database.collectionGroup("restaurants").whereIn("name", restaurantNames)
+
+                restoQuery.get().addOnSuccessListener { querySnapshot ->
+                    for (document in querySnapshot){
+                        val data = document.data
+                        val name = data["name"] as String
+                        val cuisineType = data["cuisineType"] as String
+                        val diningType = data["diningType"] as String
+                        val imageResId = data["imageResId"] as String
+                        val location = data["location"] as String
+                        val rating = data["rating"] as Double
+                        val restaurant = RestaurantPreviewModel(name, rating, location, diningType, cuisineType, imageResId)
+                        restoData.add(restaurant)
+                    }
+                    Log.e(TAG, "Retrieved Restos")
+                    myAdapter.notifyDataSetChanged()
                 }
-
-                for (dc : DocumentChange in value?.documentChanges!!){
-                    if (dc.type == DocumentChange.Type.ADDED){
-
-                        data.add(dc.document.toObject(RestaurantPreviewModel::class.java))
+                    .addOnFailureListener{
+                            exception ->
+                        Log.e(TAG, "Error getting restaurants", exception)
                     }
                 }
-               myAdapter.notifyDataSetChanged()
+            else {
+                Log.e(TAG, "Error getting likes", likesTask.exception)
             }
-            })
-
+        }
     }
-
 }

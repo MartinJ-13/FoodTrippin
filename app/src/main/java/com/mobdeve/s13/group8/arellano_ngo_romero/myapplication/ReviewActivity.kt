@@ -1,6 +1,7 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -259,10 +260,10 @@ class ReviewActivity : AppCompatActivity(){
                             .document()
                             .set(reviewData)
                             .addOnSuccessListener {
-                                Log.d(ContentValues.TAG, "Review added to Firestore")
+                                Log.d(TAG, "Review added to Firestore")
                             }
                             .addOnFailureListener { e ->
-                                Log.w(ContentValues.TAG, "Error adding review to Firestore", e)
+                                Log.w(TAG, "Error adding review to Firestore", e)
                             }
                     }
 
