@@ -113,7 +113,7 @@
             android:layout_weight="1"
             android:background="@drawable/rounded_search_border"
             android:clipToOutline="true"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/avatars" />
 
 

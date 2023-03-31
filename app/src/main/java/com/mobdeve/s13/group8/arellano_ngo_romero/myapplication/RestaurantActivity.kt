@@ -144,7 +144,7 @@ class RestaurantActivity : AppCompatActivity()  {
         var likeFlag: Boolean
         likeFlag = false
 
-        RetrieveReviewsListener(restaurantName, viewBinding)
+        retrieveReviewsListener(restaurantName, viewBinding)
 
         viewBinding.restaurantLikeBtn.setOnClickListener(View.OnClickListener {
             likeFlag = if(!likeFlag) {
@@ -165,7 +165,7 @@ class RestaurantActivity : AppCompatActivity()  {
         })
     }
 
-    private fun RetrieveReviewsListener(restaurantName : String, binding: ActivityRestaurantBinding) {
+    private fun retrieveReviewsListener(restaurantName : String, binding: ActivityRestaurantBinding) {
         database = FirebaseFirestore.getInstance()
         database.collection("reviews").whereEqualTo("restaurant", restaurantName).addSnapshotListener(object : EventListener<QuerySnapshot>{
             override fun onEvent(

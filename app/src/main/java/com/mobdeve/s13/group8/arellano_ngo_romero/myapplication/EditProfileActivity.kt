@@ -58,6 +58,7 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun dbHelper(username : String, downloadUri : String?) {
         val query = database.collection("users").whereEqualTo("username", username)
+        viewBinding.progressBar.visibility = View.VISIBLE
         query.get()
             .addOnSuccessListener { querySnapshot ->
                 for (document in querySnapshot.documents) {
@@ -86,6 +87,17 @@ class EditProfileActivity : AppCompatActivity() {
                     "Photo successfully updated/added!",
                     Toast.LENGTH_SHORT
                 ).show()
+                viewBinding.progressBar.visibility = View.GONE
+                val intent1 = Intent(this, MainActivity::class.java)
+                intent1.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent1)
+
+                val intent2 = Intent(this, HomePageActivity::class.java)
+                intent2.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent2)
+
+                val intent3 = Intent(this, ProfilemyreviewsActivity::class.java)
+                startActivity(intent3)
                 finish()
             }.addOnFailureListener { exception ->
                 Log.d(ContentValues.TAG, "Cannot find user ", exception)
@@ -147,7 +159,6 @@ class EditProfileActivity : AppCompatActivity() {
                 } else {
                     dbHelper(username, profilePic)
                 }
-                finish()
             }
             else {
                 Toast.makeText(this, "No changes detected!", Toast.LENGTH_SHORT
@@ -156,8 +167,6 @@ class EditProfileActivity : AppCompatActivity() {
         })
 
         viewBinding.editProfCancelBtn.setOnClickListener(View.OnClickListener {
-            val intent1 = Intent(this, MainActivity::class.java)
-            intent1.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             finish()
         })
     }
