@@ -49,12 +49,10 @@ class HomePageActivity : AppCompatActivity() {
         if (user != null){
             val uid = user.uid
         }
-<<<<<<< Updated upstream
-        retrieveRestaurantsListener()
-=======
+
         RetrieveReviewsListener()
 
->>>>>>> Stashed changes
+
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding
         val drawerLayout = viewBinding.drawerLayout
@@ -153,9 +151,7 @@ class HomePageActivity : AppCompatActivity() {
         popupWindow.showAtLocation(rootView, Gravity.CENTER, 0, 0)
     }
 
-<<<<<<< Updated upstream
-    private fun retrieveRestaurantsListener() {
-=======
+
     private fun getFilteredRestaurants(
         cuisineType: String,
         diningType: String,
@@ -170,6 +166,13 @@ class HomePageActivity : AppCompatActivity() {
         minRating?.let {
             query = query.whereGreaterThanOrEqualTo("rating", it)
         }
+
+        if (diningType != null){
+            query = collectionRef
+                .whereEqualTo("cuisineType", cuisineType)
+                .whereEqualTo("diningType", diningType)
+        }
+
         query.get()
             .addOnSuccessListener { documents ->
                 val restaurants = mutableListOf<RestaurantPreviewModel>()
@@ -186,7 +189,6 @@ class HomePageActivity : AppCompatActivity() {
 
 
     private fun RetrieveReviewsListener() {
->>>>>>> Stashed changes
         viewBinding.loadingRestoPb.visibility = View.VISIBLE
         database = FirebaseFirestore.getInstance()
 
