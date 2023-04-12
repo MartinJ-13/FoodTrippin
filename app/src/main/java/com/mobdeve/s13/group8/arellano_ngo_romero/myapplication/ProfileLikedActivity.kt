@@ -118,6 +118,7 @@ class ProfileLikedActivity : AppCompatActivity()  {
             val intent = Intent(applicationContext, EditProfileActivity::class.java)
             intent.putExtra("username", username)
             intent.putExtra("profilePic", profilePic)
+            intent.putExtra("bio", bio)
             this.startActivity(intent)
             finish()
         })

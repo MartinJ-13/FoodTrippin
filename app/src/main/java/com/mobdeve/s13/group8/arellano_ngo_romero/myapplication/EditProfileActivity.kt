@@ -111,6 +111,14 @@ class EditProfileActivity : AppCompatActivity() {
 
         val username = intent.getStringExtra("username").toString()
         val profilePic = intent.getStringExtra("profilePic").toString()
+        val bio = intent.getStringExtra("bio").toString()
+
+        if(bio.isNullOrEmpty()){
+            viewBinding.editProfBioPt.setText("")
+        }
+        else {
+            viewBinding.editProfBioPt.setText(bio)
+        }
         database = FirebaseFirestore.getInstance()
 
         Picasso.get().load(profilePic).into(viewBinding.editProfAvatarIv)

@@ -29,6 +29,8 @@ import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.math.pow
+import kotlin.math.roundToInt
 
 @Suppress("DEPRECATION")
 class ReviewActivity : AppCompatActivity(){
@@ -81,6 +83,11 @@ class ReviewActivity : AppCompatActivity(){
             }
         }
 
+    //rounds up averageRating
+    fun Double.round(decimalPlaces: Int): Double {
+        val factor = 10.0.pow(decimalPlaces.toDouble())
+        return (this * factor).roundToInt() / factor
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityReviewBinding.inflate(layoutInflater)
@@ -233,6 +240,7 @@ class ReviewActivity : AppCompatActivity(){
                                             .addOnSuccessListener {
                                                 Log.d(ContentValues.TAG, "Review added to Firestore")
                                             }.addOnCompleteListener {
+                                                //gets the average rating of all reviews.
                                                 database.collection("reviews").whereEqualTo("restaurant", restaurantName)
                                                     .get().addOnSuccessListener { documents ->
                                                         var totalRating = 0.0
@@ -244,7 +252,7 @@ class ReviewActivity : AppCompatActivity(){
                                                                totalRating += rating
                                                                count++
                                                            }
-                                                            val averageRating = totalRating / count
+                                                            val averageRating = (totalRating / count).round(2)
                                                             database.collection("restaurants").whereEqualTo("name", restaurantName)
                                                                 .get().addOnSuccessListener { documents ->
                                                                     for (document in documents) {
@@ -319,7 +327,9 @@ class ReviewActivity : AppCompatActivity(){
             })
         }
 
+
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
