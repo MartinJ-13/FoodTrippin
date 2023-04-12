@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -32,12 +33,18 @@ class SignUpActivity2 : AppCompatActivity() {
         val checkBox = viewBinding.showPasswordCb2
 
         checkBox.setOnCheckedChangeListener { _, isChecked ->
+            val nunitoFont = ResourcesCompat.getFont(applicationContext, R.font.nunito)
             if (isChecked) {
                 viewBinding.inputPassTv.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
                 viewBinding.inputPassTv2.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                //to retain font when inputType is changed
+                viewBinding.inputPassTv.typeface = nunitoFont
+                viewBinding.inputPassTv2.typeface = nunitoFont
             } else {
                 viewBinding.inputPassTv.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
                 viewBinding.inputPassTv2.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                viewBinding.inputPassTv.typeface = nunitoFont
+                viewBinding.inputPassTv2.typeface = nunitoFont
             }
             viewBinding.inputPassTv.setSelection(viewBinding.inputPassTv.text.length)
             viewBinding.inputPassTv2.setSelection(viewBinding.inputPassTv2.text.length)

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.InputType
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityMainBinding
@@ -20,10 +21,13 @@ class MainActivity : AppCompatActivity() {
         val checkBox = viewBinding.showPasswordCb
 
         checkBox.setOnCheckedChangeListener { _, isChecked ->
+            val nunitoFont = ResourcesCompat.getFont(applicationContext, R.font.nunito)
             if (isChecked) {
                 viewBinding.inputLogPasswordTv.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                viewBinding.inputLogPasswordTv.typeface = nunitoFont
             } else {
                 viewBinding.inputLogPasswordTv.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                viewBinding.inputLogPasswordTv.typeface = nunitoFont
             }
             viewBinding.inputLogPasswordTv.setSelection(viewBinding.inputLogPasswordTv.text.length)
         }
