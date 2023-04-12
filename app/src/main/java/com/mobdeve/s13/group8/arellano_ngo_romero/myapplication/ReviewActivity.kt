@@ -46,7 +46,6 @@ class ReviewActivity : AppCompatActivity(){
 
     private lateinit var database: FirebaseFirestore
 
-
     //function to convert Bitmap to Uri (If the camera was used to take the photo)
     private fun convertBitMapToUri(uid: String, bitmap: Bitmap): Uri? {
         //Save image to phone's storage
@@ -233,6 +232,37 @@ class ReviewActivity : AppCompatActivity(){
                                             .set(reviewData)
                                             .addOnSuccessListener {
                                                 Log.d(ContentValues.TAG, "Review added to Firestore")
+                                            }.addOnCompleteListener {
+                                                database.collection("reviews").whereEqualTo("restaurant", restaurantName)
+                                                    .get().addOnSuccessListener { documents ->
+                                                        var totalRating = 0.0
+                                                        var count = 0
+
+                                                        for (document in documents){
+                                                           val rating = document.getDouble("rating")
+                                                           if (rating != null){
+                                                               totalRating += rating
+                                                               count++
+                                                           }
+                                                            val averageRating = totalRating / count
+                                                            database.collection("restaurants").whereEqualTo("name", restaurantName)
+                                                                .get().addOnSuccessListener { documents ->
+                                                                    for (document in documents) {
+                                                                        database.collection("restaurants").document(document.id)
+                                                                            .update("rating", averageRating)
+                                                                            .addOnSuccessListener {
+                                                                                Log.d(ContentValues.TAG, "Rating updated for restaurant $restaurantName")
+                                                                            }
+                                                                            .addOnFailureListener { e ->
+                                                                                Log.w(ContentValues.TAG, "Error updating rating for restaurant $restaurantName", e)
+                                                                            }
+                                                                    }
+                                                                }
+                                                                .addOnFailureListener { e ->
+                                                                    Log.w(ContentValues.TAG, "Error getting restaurant document for $restaurantName", e)
+                                                                }
+                                                        }
+                                                    }
                                             }
                                             .addOnFailureListener { e ->
                                                 Log.w(ContentValues.TAG, "Error adding review to Firestore", e)
