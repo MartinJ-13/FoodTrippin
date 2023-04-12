@@ -121,6 +121,19 @@
                 android:textColor="#000000"
                 android:textColorHint="#3A3A3A"
                 android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/showPasswordCb2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_weight="0"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="Show password"
+                android:textColor="#404040"
+                app:layout_constraintBottom_toTopOf="@+id/loginBtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/passwordLl" />
         </LinearLayout>
 
         <Button

@@ -110,13 +110,13 @@
         </LinearLayout>
 
         <CheckBox
-            android:id="@+id/stayLogInCb"
+            android:id="@+id/showPasswordCb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="56dp"
             android:layout_weight="1"
             android:fontFamily="@font/nunito_semibold"
-            android:text="Stay logged in"
+            android:text="Show password"
             android:textColor="#404040"
             app:layout_constraintBottom_toTopOf="@+id/loginBtn"
             app:layout_constraintStart_toStartOf="parent"

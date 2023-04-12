@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -28,6 +29,19 @@ class SignUpActivity2 : AppCompatActivity() {
         val username =  intent.getStringExtra("username").toString()
         val email = intent.getStringExtra("email").toString()
 
+        val checkBox = viewBinding.showPasswordCb2
+
+        checkBox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                viewBinding.inputPassTv.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                viewBinding.inputPassTv2.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                viewBinding.inputPassTv.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                viewBinding.inputPassTv2.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            }
+            viewBinding.inputPassTv.setSelection(viewBinding.inputPassTv.text.length)
+            viewBinding.inputPassTv2.setSelection(viewBinding.inputPassTv2.text.length)
+        }
 
         viewBinding.createBtn.setOnClickListener(View.OnClickListener {
             val pw1 = viewBinding.inputPassTv.text.toString()

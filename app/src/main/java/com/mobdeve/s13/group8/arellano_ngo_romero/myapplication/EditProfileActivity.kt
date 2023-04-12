@@ -58,7 +58,7 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun dbHelper(username : String, downloadUri : String?) {
         val query = database.collection("users").whereEqualTo("username", username)
-        viewBinding.progressBar.visibility = View.VISIBLE
+
         query.get()
             .addOnSuccessListener { querySnapshot ->
                 for (document in querySnapshot.documents) {
@@ -87,7 +87,7 @@ class EditProfileActivity : AppCompatActivity() {
                     "Photo successfully updated/added!",
                     Toast.LENGTH_SHORT
                 ).show()
-                viewBinding.progressBar.visibility = View.GONE
+                
                 val intent1 = Intent(this, MainActivity::class.java)
                 intent1.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent1)
@@ -113,12 +113,10 @@ class EditProfileActivity : AppCompatActivity() {
         val profilePic = intent.getStringExtra("profilePic").toString()
         val bio = intent.getStringExtra("bio").toString()
 
-        if(bio.isNullOrEmpty()){
-            viewBinding.editProfBioPt.setText("")
-        }
-        else {
+        if(bio.isNotBlank()){
             viewBinding.editProfBioPt.setText(bio)
         }
+
         database = FirebaseFirestore.getInstance()
 
         Picasso.get().load(profilePic).into(viewBinding.editProfAvatarIv)

@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityTakephotoBinding
@@ -134,6 +135,7 @@ class TakePhotoActivity : AppCompatActivity() {
                 val intent1 = Intent(this, MainActivity::class.java)
                 intent1.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent1)
+                FirebaseAuth.getInstance().signOut() //forces new user to login
             }
 
         })

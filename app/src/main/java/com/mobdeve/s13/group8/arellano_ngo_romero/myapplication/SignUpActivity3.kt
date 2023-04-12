@@ -47,10 +47,12 @@ class SignUpActivity3 : AppCompatActivity() {
             intent.putExtra("email", email)
             intent.putExtra("password", password)
             startActivity(intent)
+
         })
         //login
         viewBinding.finishBtn1.setOnClickListener(View.OnClickListener {
             finish()
+            FirebaseAuth.getInstance().signOut() //forces new users to login
         })
     }
 

@@ -299,6 +299,38 @@ class ReviewActivity : AppCompatActivity(){
                             .set(reviewData)
                             .addOnSuccessListener {
                                 Log.d(TAG, "Review added to Firestore")
+                            }.addOnCompleteListener {
+                                //gets the average rating of all reviews.
+                                database.collection("reviews").whereEqualTo("restaurant", restaurantName)
+                                    .get().addOnSuccessListener { documents ->
+                                        var totalRating = 0.0
+                                        var count = 0
+
+                                        for (document in documents){
+                                            val rating = document.getDouble("rating")
+                                            if (rating != null){
+                                                totalRating += rating
+                                                count++
+                                            }
+                                            val averageRating = (totalRating / count).round(2)
+                                            database.collection("restaurants").whereEqualTo("name", restaurantName)
+                                                .get().addOnSuccessListener { documents ->
+                                                    for (document in documents) {
+                                                        database.collection("restaurants").document(document.id)
+                                                            .update("rating", averageRating)
+                                                            .addOnSuccessListener {
+                                                                Log.d(ContentValues.TAG, "Rating updated for restaurant $restaurantName")
+                                                            }
+                                                            .addOnFailureListener { e ->
+                                                                Log.w(ContentValues.TAG, "Error updating rating for restaurant $restaurantName", e)
+                                                            }
+                                                    }
+                                                }
+                                                .addOnFailureListener { e ->
+                                                    Log.w(ContentValues.TAG, "Error getting restaurant document for $restaurantName", e)
+                                                }
+                                        }
+                                    }
                             }
                             .addOnFailureListener { e ->
                                 Log.w(TAG, "Error adding review to Firestore", e)
