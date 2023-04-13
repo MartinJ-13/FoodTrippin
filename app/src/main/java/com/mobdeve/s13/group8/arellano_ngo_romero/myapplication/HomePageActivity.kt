@@ -194,6 +194,10 @@ class HomePageActivity : AppCompatActivity() {
         val collectionRef = db.collection("restaurants")
         var query: Query = collectionRef
 
+        if (rating == 0.00 && cuisineType == "--Choose a Cuisine--" && diningType == "--Choose a Dining Option--"){
+            viewBinding.restaurantTagsLl.visibility = View.GONE
+        }
+
         // Add a filter for minimum rating
         if (rating > 0){
             query = query.whereGreaterThanOrEqualTo("rating", rating)
