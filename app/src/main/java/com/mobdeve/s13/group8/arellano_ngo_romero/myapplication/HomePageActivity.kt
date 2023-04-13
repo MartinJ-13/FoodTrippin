@@ -1,16 +1,12 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
-import android.text.TextWatcher
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.SearchView
 import android.widget.PopupWindow
-import android.widget.TextView
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
