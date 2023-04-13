@@ -149,12 +149,13 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
                     }
                 }
                 reviewAdapter.notifyDataSetChanged()
+                if(data.size == 0){
+                    binding.noReviewsLl.visibility = View.VISIBLE
+                }else{
+                    binding.noReviewsLl.visibility = View.GONE
+                }
             }
         })
-        if(data.size == 0){
-            binding.noReviewsLl.visibility = View.VISIBLE
-        }else{
-            binding.noReviewsLl.visibility = View.GONE
-        }
+
     }
 }

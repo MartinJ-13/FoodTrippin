@@ -39,6 +39,11 @@ class ProfileLikedActivity : AppCompatActivity()  {
         val profilePic = intent.getStringExtra("profilePic").toString()
         val bio = intent.getStringExtra("bio").toString()
 
+        if(bio.isNullOrEmpty())
+            viewBinding.profileMyReviewsBioEt.visibility = View.GONE
+        else
+            viewBinding.profileMyReviewsBioEt.text = bio
+
         viewBinding.profileMyReviewsUsernameTv.text = username
         Picasso.get().load(profilePic).into(viewBinding.reviewUserIconIv)
         viewBinding.profileMyReviewsBioEt.text = bio
