@@ -137,6 +137,17 @@ class HomePageActivity : AppCompatActivity() {
 
     }
 
+    override fun onPause() {
+        super.onPause()
+
+        // Reset the data to the original unfiltered list
+        restoAdapter.setData(revertRestoData)
+
+        // Hide the filter tags and close button
+        viewBinding.restaurantTagsLl.visibility = View.GONE
+        viewBinding.closeTagsBtn.visibility = View.GONE
+    }
+
     private fun showFilterPopup() {
         popupBinding = PopupRestaurantfilterBinding.inflate(layoutInflater)
 
