@@ -16,6 +16,8 @@ class RestaurantPreviewAdapter (private var data: ArrayList<RestaurantPreviewMod
         notifyDataSetChanged()
     }
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantPreviewViewHolder {
 
         val itemViewBinding: ItemlayoutRestaurantcardBinding = ItemlayoutRestaurantcardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
