@@ -31,7 +31,7 @@ class ProfileLikedActivity : AppCompatActivity()  {
         val viewBinding: ActivityProfilelikedBinding = ActivityProfilelikedBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        viewBinding.loadingPb1.visibility = View.VISIBLE
+
 
         database = FirebaseFirestore.getInstance()
         //Logged in user
@@ -49,7 +49,7 @@ class ProfileLikedActivity : AppCompatActivity()  {
         viewBinding.profileMyReviewsBioEt.text = bio
 
         retrieveLikesListener(username, viewBinding)
-        viewBinding.loadingPb1.visibility = View.GONE
+
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding
         val drawerLayout = viewBinding.drawerLayout
@@ -160,7 +160,6 @@ class ProfileLikedActivity : AppCompatActivity()  {
                 if(restaurantNames.isNotEmpty()) {
                     val restoQuery =
                         database.collectionGroup("restaurants").whereIn("name", restaurantNames)
-                        restoData.clear()
                     restoQuery.get().addOnSuccessListener { querySnapshot ->
                         for (document in querySnapshot) {
                             val data = document.data

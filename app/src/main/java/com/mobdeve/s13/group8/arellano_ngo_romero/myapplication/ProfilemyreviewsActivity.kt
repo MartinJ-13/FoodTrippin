@@ -28,7 +28,7 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
         super.onCreate(savedInstanceState)
         val viewBinding: ActivityProfilemyreviewsBinding = ActivityProfilemyreviewsBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
-        viewBinding.loadingPb2.visibility = View.VISIBLE
+
 
         database = FirebaseFirestore.getInstance()
         //Logged in user
@@ -48,7 +48,7 @@ class ProfilemyreviewsActivity : AppCompatActivity()  {
 
                 if(profilePic != null)
                     Picasso.get().load(profilePic).into(viewBinding.reviewUserIconIv)
-                viewBinding.loadingPb2.visibility = View.GONE
+
                 viewBinding.profileMyReviewsUsernameTv.text = username
 
                 if(bio.isNullOrEmpty())

@@ -1,5 +1,6 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -38,7 +39,7 @@ class HomePageActivity : AppCompatActivity() {
         viewBinding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        RetrieveReviewsListener()
+        retrieveRestoListener()
 
         restoData = ArrayList()
         filteredRestaurants = ArrayList()
@@ -135,14 +136,28 @@ class HomePageActivity : AppCompatActivity() {
         // Save a copy of the original data in revertRestoData
         revertRestoData = ArrayList(restoData)
 
+//        val restoRef = database.collection("restaurants")
+//
+//        restoRef.document("name").addSnapshotListener{documentSnapshot, e->
+//            if(e != null){
+//                Log.w(TAG,"Listen failed", e)
+//                return@addSnapshotListener
+//            }
+//            if(documentSnapshot != null && documentSnapshot.exists()){
+//                val updatedRating = documentSnapshot.getDouble("rating")
+//                restoData[position].rating = updatedRating!!
+//                restoAdapter.notifyItemChanged()
+//            }
+//
+//        }
     }
 
-    override fun onPause() {
-        super.onPause()
-
+    override fun onResume() {
+        super.onResume()
+        retrieveRestoListener()
         // Reset the data to the original unfiltered list
-        restoAdapter.setData(revertRestoData)
-
+        //restoAdapter.setData(revertRestoData)
+        restoAdapter.setData(restoData)
         // Hide the filter tags and close button
         viewBinding.restaurantTagsLl.visibility = View.GONE
         viewBinding.closeTagsBtn.visibility = View.GONE
@@ -259,8 +274,7 @@ class HomePageActivity : AppCompatActivity() {
             }
     }
 
-    private fun RetrieveReviewsListener() {
-        viewBinding.loadingRestoPb.visibility = View.VISIBLE
+    private fun retrieveRestoListener() {
         database = FirebaseFirestore.getInstance()
 
         database.collection("restaurants").get()
@@ -277,7 +291,6 @@ class HomePageActivity : AppCompatActivity() {
                 revertRestoData.clear()
                 revertRestoData.addAll(restaurants)
 
-                viewBinding.loadingRestoPb.visibility = View.INVISIBLE
             }
             .addOnFailureListener { exception ->
                 // Handle error
