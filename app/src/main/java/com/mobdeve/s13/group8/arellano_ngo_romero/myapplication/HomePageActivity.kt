@@ -7,6 +7,7 @@ import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupWindow
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -29,6 +30,7 @@ class HomePageActivity : AppCompatActivity() {
     private lateinit var popupWindow: PopupWindow
     private lateinit var database : FirebaseFirestore
     private lateinit var filteredRestaurants: ArrayList<RestaurantPreviewModel>
+    private lateinit var revertRestoData: ArrayList<RestaurantPreviewModel>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +49,7 @@ class HomePageActivity : AppCompatActivity() {
 
         //logged in user
         val user = FirebaseAuth.getInstance().currentUser
-        if (user != null){
+        if (user != null) {
             val uid = user.uid
         }
 
@@ -95,35 +97,6 @@ class HomePageActivity : AppCompatActivity() {
         viewBinding.filterBtn.setOnClickListener {
             showFilterPopup()
         }
-//
-//        viewBinding.searchView.setOnQueryTextListener(object : OnQueryTextListener {
-//                override fun onQueryTextSubmit(query: String?): Boolean {
-//                    tempRestoData.clear()
-//                    tempRestoData.addAll(originalRestoData)
-//                    restoAdapter.setData(tempRestoData)
-//                    if (!query.isNullOrEmpty()) {
-//                        val lowerCaseQuery = query.lowercase()
-//                        val filteredRestaurants = ArrayList<RestaurantPreviewModel>()
-//                        for (restaurant in tempRestoData) {
-//                            if (restaurant.name?.lowercase()?.contains(lowerCaseQuery) == true ||
-//                                restaurant.location?.lowercase()?.contains(lowerCaseQuery) == true ||
-//                                restaurant.cuisineType?.lowercase()?.contains(lowerCaseQuery) == true ||
-//                                restaurant.diningType?.lowercase()?.contains(lowerCaseQuery) == true) {
-//                                filteredRestaurants.add(restaurant)
-//                            }
-//                        }
-//                        restoAdapter.setData(filteredRestaurants)
-//                    } else {
-//                        restoAdapter.setData(tempRestoData)
-//                    }
-//                    return true
-//                }
-//
-//                override fun onQueryTextChange(newText: String?): Boolean {
-//                    return false
-//                }
-//            }
-// Listen for changes to the search query input in real time
 
         viewBinding.searchView.setOnQueryTextListener(object : OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -135,9 +108,13 @@ class HomePageActivity : AppCompatActivity() {
                     val filteredRestaurants = ArrayList<RestaurantPreviewModel>()
                     for (restaurant in restoData) {
                         if (restaurant.name?.lowercase()?.contains(newText.lowercase()) == true ||
-                            restaurant.location?.lowercase()?.contains(newText.lowercase()) == true ||
-                            restaurant.cuisineType?.lowercase()?.contains(newText.lowercase()) == true ||
-                            restaurant.diningType?.lowercase()?.contains(newText.lowercase()) == true) {
+                            restaurant.location?.lowercase()
+                                ?.contains(newText.lowercase()) == true ||
+                            restaurant.cuisineType?.lowercase()
+                                ?.contains(newText.lowercase()) == true ||
+                            restaurant.diningType?.lowercase()
+                                ?.contains(newText.lowercase()) == true
+                        ) {
                             filteredRestaurants.add(restaurant)
                         }
                     }
@@ -149,10 +126,16 @@ class HomePageActivity : AppCompatActivity() {
             }
         })
 
+        viewBinding.closeTagsBtn.setOnClickListener{
 
+            restoAdapter.setData(revertRestoData)
+            viewBinding.restaurantTagsLl.visibility = View.GONE
+        }
+
+        // Save a copy of the original data in revertRestoData
+        revertRestoData = ArrayList(restoData)
 
     }
-
 
     private fun showFilterPopup() {
         popupBinding = PopupRestaurantfilterBinding.inflate(layoutInflater)
@@ -169,20 +152,15 @@ class HomePageActivity : AppCompatActivity() {
         popupBinding.btnApply.setOnClickListener{
             val cuisineType = cuisineOptions[popupBinding.spCuisineType.selectedItemPosition]
             val diningType = diningOptions[popupBinding.spDiningType.selectedItemPosition]
-//            val minRating = popupBinding.rbFilter.rating.toDouble() ?: 0.0 // Set default value to 0.0 if input is invalid
-//            getFilteredRestaurants(cuisineType, diningType, minRating) { filteredRestaurants ->
-//                restoData.clear()
-//                restoData.addAll(filteredRestaurants)
-//                restoAdapter.notifyDataSetChanged()
-//            }
-            getFilteredRestaurants(cuisineType, diningType) { filteredRestaurants ->
+            val rating = popupBinding.rbFilter.rating.toDouble() ?: 0.0 // Set default value to 0.0 if input is invalid
+
+            getFilteredRestaurants(cuisineType, diningType, rating) { filteredRestaurants ->
                 restoData.clear()
                 restoData.addAll(filteredRestaurants)
                 restoAdapter.notifyDataSetChanged()
             }
             popupWindow.dismiss()
         }
-
 
         for (i in spinnerAdapters.indices) {
             val adapter = spinnerAdapters[i]
@@ -211,31 +189,55 @@ class HomePageActivity : AppCompatActivity() {
         popupWindow.showAtLocation(rootView, Gravity.CENTER, 0, 0)
     }
 
-    private fun getFilteredRestaurants(
-        cuisineType: String,
-        diningType: String,
-        callback: (List<RestaurantPreviewModel>) -> Unit
-    ) {
+    private fun getFilteredRestaurants(cuisineType: String, diningType: String, rating: Double, callback: (List<RestaurantPreviewModel>) -> Unit) {
         val db = FirebaseFirestore.getInstance()
         val collectionRef = db.collection("restaurants")
         var query: Query = collectionRef
 
+        // Add a filter for minimum rating
+        if (rating > 0){
+            query = query.whereGreaterThanOrEqualTo("rating", rating)
+            viewBinding.starTagChip.text = "${rating} Stars"
+            viewBinding.starTagChip.visibility = View.VISIBLE
+            viewBinding.closeTagsBtn.visibility = View.VISIBLE
+            viewBinding.restaurantTagsLl.visibility = View.VISIBLE
+        } else {
+            viewBinding.starTagChip.visibility = View.GONE
+        }
+
         if (cuisineType != "--Choose a Cuisine--") {
             query = query.whereEqualTo("cuisineType", cuisineType)
+            viewBinding.cuisineTagChip.text = cuisineType
+            viewBinding.cuisineTagChip.visibility = View.VISIBLE
+            viewBinding.closeTagsBtn.visibility = View.VISIBLE
+            viewBinding.restaurantTagsLl.visibility = View.VISIBLE
+        } else {
+            viewBinding.cuisineTagChip.visibility = View.GONE
         }
 
         if (diningType != "--Choose a Dining Option--") {
             query = query.whereEqualTo("diningType", diningType)
+            viewBinding.diningTagChip.text = diningType
+            viewBinding.diningTagChip.visibility = View.VISIBLE
+            viewBinding.closeTagsBtn.visibility = View.VISIBLE
+            viewBinding.restaurantTagsLl.visibility = View.VISIBLE
+        }
+        else {
+            viewBinding.diningTagChip.visibility = View.GONE
         }
 
         query.get()
             .addOnSuccessListener { documents ->
-                val restaurants = mutableListOf<RestaurantPreviewModel>()
+                val filteredRestaurants = ArrayList<RestaurantPreviewModel>()
                 for (document in documents) {
                     val restaurant = document.toObject(RestaurantPreviewModel::class.java)
-                    restaurants.add(restaurant)
+                    filteredRestaurants.add(restaurant)
                 }
-                callback(restaurants)
+                if (filteredRestaurants.isEmpty()) {
+                    Toast.makeText(this, "No results found", Toast.LENGTH_SHORT).show()
+                }
+                restoAdapter.setData(filteredRestaurants) // Update the adapter with the filtered results
+                callback(filteredRestaurants)
             }
             .addOnFailureListener { exception ->
                 // Handle error
@@ -246,25 +248,24 @@ class HomePageActivity : AppCompatActivity() {
         viewBinding.loadingRestoPb.visibility = View.VISIBLE
         database = FirebaseFirestore.getInstance()
 
-        database.collection("restaurants").addSnapshotListener(object :
-            EventListener<QuerySnapshot> {
-            override fun onEvent(
-                value: QuerySnapshot?,
-                error: FirebaseFirestoreException?
-            ) {
-                if (error != null){
-                    Log.e("Error in database", error.message.toString())
-                    return
+        database.collection("restaurants").get()
+            .addOnSuccessListener { documents ->
+                val restaurants = mutableListOf<RestaurantPreviewModel>()
+                for (document in documents) {
+                    val restaurant = document.toObject(RestaurantPreviewModel::class.java)
+                    restaurants.add(restaurant)
                 }
-
-                for (dc : DocumentChange in value?.documentChanges!!){
-                    if (dc.type == DocumentChange.Type.ADDED){
-                        restoData.add(dc.document.toObject(RestaurantPreviewModel::class.java))
-                    }
-                }
+                restoData.clear()
+                restoData.addAll(restaurants)
                 restoAdapter.notifyDataSetChanged()
+
+                revertRestoData.clear()
+                revertRestoData.addAll(restaurants)
+
                 viewBinding.loadingRestoPb.visibility = View.INVISIBLE
             }
-        })
+            .addOnFailureListener { exception ->
+                // Handle error
+            }
     }
 }

@@ -37,7 +37,7 @@
                 android:layout_marginTop="16dp"
                 android:backgroundTint="@color/orange"
                 android:src="@drawable/close_popup_icon" />
-            <!--
+
             <TextView
                 android:id="@+id/tvFilterRating"
                 android:layout_width="match_parent"
@@ -57,13 +57,13 @@
                 android:progressTint="#FFC000"
                 android:secondaryProgressTint="#F6D87C"
               />
--->
+
 
             <TextView
                 android:id="@+id/tvCuisineType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/closePopupBtn"
+                android:layout_below="@+id/rbFilter"
                 android:layout_marginTop="16dp"
                 android:text="Cuisine"
                 android:textSize="18sp" />
