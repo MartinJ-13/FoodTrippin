@@ -1,13 +1,17 @@
 package com.mobdeve.s13.group8.arellano_ngo_romero.myapplication
 
+import android.text.TextWatcher
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import android.widget.PopupWindow
-import android.widget.SearchView
+import android.widget.TextView
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityHomepageBinding
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.PopupRestaurantfilterBinding
-import android.widget.SearchView.OnQueryTextListener
+
 
 class HomePageActivity : AppCompatActivity() {
 
@@ -28,12 +32,18 @@ class HomePageActivity : AppCompatActivity() {
     private lateinit var popupBinding: PopupRestaurantfilterBinding
     private lateinit var popupWindow: PopupWindow
     private lateinit var database : FirebaseFirestore
+    private lateinit var filteredRestaurants: ArrayList<RestaurantPreviewModel>
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        restoData = arrayListOf()
+        RetrieveReviewsListener()
+
+        restoData = ArrayList()
+        filteredRestaurants = ArrayList()
         recyclerView = viewBinding.recyclerView
         restoAdapter = RestaurantPreviewAdapter(restoData)
         recyclerView.adapter = restoAdapter
@@ -45,14 +55,10 @@ class HomePageActivity : AppCompatActivity() {
             val uid = user.uid
         }
 
-        RetrieveReviewsListener()
-
         //SIDEBAR CODE
         // Get the DrawerLayout and NavigationView using view binding
         val drawerLayout = viewBinding.drawerLayout
         val navView = viewBinding.navView
-
-
 
         // Set a click listener for the hamburger icon to open the sidebar
         viewBinding.sidebarNav.setOnClickListener {
@@ -93,7 +99,64 @@ class HomePageActivity : AppCompatActivity() {
         viewBinding.filterBtn.setOnClickListener {
             showFilterPopup()
         }
+//
+//        viewBinding.searchView.setOnQueryTextListener(object : OnQueryTextListener {
+//                override fun onQueryTextSubmit(query: String?): Boolean {
+//                    tempRestoData.clear()
+//                    tempRestoData.addAll(originalRestoData)
+//                    restoAdapter.setData(tempRestoData)
+//                    if (!query.isNullOrEmpty()) {
+//                        val lowerCaseQuery = query.lowercase()
+//                        val filteredRestaurants = ArrayList<RestaurantPreviewModel>()
+//                        for (restaurant in tempRestoData) {
+//                            if (restaurant.name?.lowercase()?.contains(lowerCaseQuery) == true ||
+//                                restaurant.location?.lowercase()?.contains(lowerCaseQuery) == true ||
+//                                restaurant.cuisineType?.lowercase()?.contains(lowerCaseQuery) == true ||
+//                                restaurant.diningType?.lowercase()?.contains(lowerCaseQuery) == true) {
+//                                filteredRestaurants.add(restaurant)
+//                            }
+//                        }
+//                        restoAdapter.setData(filteredRestaurants)
+//                    } else {
+//                        restoAdapter.setData(tempRestoData)
+//                    }
+//                    return true
+//                }
+//
+//                override fun onQueryTextChange(newText: String?): Boolean {
+//                    return false
+//                }
+//            }
+// Listen for changes to the search query input in real time
+
+        viewBinding.searchView.setOnQueryTextListener(object : OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    val filteredRestaurants = ArrayList<RestaurantPreviewModel>()
+                    for (restaurant in restoData) {
+                        if (restaurant.name?.lowercase()?.contains(newText.lowercase()) == true ||
+                            restaurant.location?.lowercase()?.contains(newText.lowercase()) == true ||
+                            restaurant.cuisineType?.lowercase()?.contains(newText.lowercase()) == true ||
+                            restaurant.diningType?.lowercase()?.contains(newText.lowercase()) == true) {
+                            filteredRestaurants.add(restaurant)
+                        }
+                    }
+                    restoAdapter.setData(filteredRestaurants)
+                } else {
+                    restoAdapter.setData(restoData)
+                }
+                return true
+            }
+        })
+
+
+
     }
+
 
     private fun showFilterPopup() {
         popupBinding = PopupRestaurantfilterBinding.inflate(layoutInflater)
@@ -183,9 +246,6 @@ class HomePageActivity : AppCompatActivity() {
             }
     }
 
-
-
-
     private fun RetrieveReviewsListener() {
         viewBinding.loadingRestoPb.visibility = View.VISIBLE
         database = FirebaseFirestore.getInstance()
@@ -211,5 +271,4 @@ class HomePageActivity : AppCompatActivity() {
             }
         })
     }
-
 }

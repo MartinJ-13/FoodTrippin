@@ -9,12 +9,16 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.core.graphics.drawable.DrawableCompat
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ItemlayoutRestaurantcardBinding
 
-class RestaurantPreviewAdapter (private val data: ArrayList<RestaurantPreviewModel>) : RecyclerView.Adapter<RestaurantPreviewViewHolder>() {
+class RestaurantPreviewAdapter (private var data: ArrayList<RestaurantPreviewModel>) : RecyclerView.Adapter<RestaurantPreviewViewHolder>() {
+
+    fun setData(newData: ArrayList<RestaurantPreviewModel>) {
+        data = newData
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantPreviewViewHolder {
 
         val itemViewBinding: ItemlayoutRestaurantcardBinding = ItemlayoutRestaurantcardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
         val myViewHolder = RestaurantPreviewViewHolder(itemViewBinding)
 
         myViewHolder.itemView.setOnClickListener{
@@ -36,5 +40,8 @@ class RestaurantPreviewAdapter (private val data: ArrayList<RestaurantPreviewMod
     override fun getItemCount(): Int {
         return data.size
     }
+
+
+
 }
 
