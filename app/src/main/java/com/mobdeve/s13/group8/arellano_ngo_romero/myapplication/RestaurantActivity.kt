@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 import com.google.firebase.firestore.core.Query
 import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.firestore.FieldPath
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityProfilemyreviewsBinding
 import com.mobdeve.s13.group8.arellano_ngo_romero.myapplication.databinding.ActivityRestaurantBinding
 import com.squareup.picasso.Picasso
@@ -181,7 +182,7 @@ class RestaurantActivity : AppCompatActivity()  {
 
     private fun retrieveReviewsListener(restaurantName : String, binding: ActivityRestaurantBinding) {
         database = FirebaseFirestore.getInstance()
-        database.collection("reviews").whereEqualTo("restaurant", restaurantName).addSnapshotListener(object : EventListener<QuerySnapshot>{
+        database.collection("reviews").whereEqualTo("restaurant", restaurantName).orderBy("date", com.google.firebase.firestore.Query.Direction.DESCENDING).addSnapshotListener(object : EventListener<QuerySnapshot>{
             override fun onEvent(
                 value: QuerySnapshot?,
                 error: FirebaseFirestoreException?
