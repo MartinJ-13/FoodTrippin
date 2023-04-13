@@ -197,10 +197,10 @@ class RestaurantActivity : AppCompatActivity()  {
                     }
                 }
                 reviewAdapter.notifyDataSetChanged()
-                if(reviewData.size == 0){
-                    binding.noReviewLl.visibility = View.VISIBLE
-                }else{
+                if(reviewData.size > 0){
                     binding.noReviewLl.visibility = View.GONE
+                }else{
+                    binding.noReviewLl.visibility = View.VISIBLE
                 }
             }
         })
