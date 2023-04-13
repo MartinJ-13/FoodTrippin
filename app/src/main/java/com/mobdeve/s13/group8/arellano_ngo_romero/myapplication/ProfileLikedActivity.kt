@@ -127,6 +127,25 @@ class ProfileLikedActivity : AppCompatActivity()  {
             this.startActivity(intent)
             finish()
         })
+
+//        database = FirebaseFirestore.getInstance()
+//        val likesQuery = database.collection("likes").whereEqualTo("username", username)
+//        val likedRestos = ArrayList<String>()
+//        likesQuery.addSnapshotListener{ querySnapshot, e ->
+//            if (e != null){
+//                Log.w(TAG, "Listen failed", e)
+//                return@addSnapshotListener
+//            }
+//            val snapshot = value ?: return@addSnapshotListener
+//            for (change in Snapshot!!.documentChanges){
+//
+//            }
+//        }
+    }
+
+    override fun onPause(){
+        super.onPause()
+        finish()
     }
 
     private fun retrieveLikesListener(username : String?, binding : ActivityProfilelikedBinding) {
@@ -141,7 +160,7 @@ class ProfileLikedActivity : AppCompatActivity()  {
                 if(restaurantNames.isNotEmpty()) {
                     val restoQuery =
                         database.collectionGroup("restaurants").whereIn("name", restaurantNames)
-
+                        restoData.clear()
                     restoQuery.get().addOnSuccessListener { querySnapshot ->
                         for (document in querySnapshot) {
                             val data = document.data
